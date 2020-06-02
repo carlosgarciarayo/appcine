@@ -3,8 +3,9 @@ package com.cgr.appcine.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
@@ -18,12 +19,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import com.cgr.appcine.model.Category;
+import com.cgr.appcine.model.Profiles;
 import com.cgr.appcine.model.User;
 import com.cgr.appcine.service.CategoryService;
+import com.cgr.appcine.service.ProfilesService;
 import com.cgr.appcine.service.UserService;
 import com.cgr.appcine.util.Utileria;
 
@@ -37,6 +37,9 @@ public class UserController {
 
 	@Autowired
 	CategoryService categoryService;
+	
+	@Autowired
+	ProfilesService profilesService;
 
 	List<User> listUser = new ArrayList();
 
@@ -46,6 +49,7 @@ public class UserController {
 	public String formRegistre(User user, Model model) {
 
 		model.addAttribute("category", categoryService.findAl());
+		model.addAttribute("profiles", profilesService.findAll());
 
 		return "admin/userForm";
 	}
@@ -70,6 +74,15 @@ public class UserController {
 			}
 		}
 
+		
+			
+//		Profiles temProfiles = new Profiles();
+//		
+//		temProfiles.setId(2);
+//		temProfiles.setName("admin");
+//		
+//		user.saveProfiles(temProfiles);
+		
 		userSerice.saveUser(user);
 		attributes.addFlashAttribute("msg", "Registro Guardado");
 

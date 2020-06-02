@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -58,11 +59,11 @@ public class User {
 	private Integer age;
 	
 	
-//	@ManyToMany(fetch = FetchType.EAGER)
-//	@JoinTable( name = "USER_PROFILE",
-//				joinColumns = @JoinColumn (name="ID_USER"),
-//				inverseJoinColumns = @JoinColumn(name="ID_PROFILE") )
-//	private List<Profiles> profiles;
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable( name = "user_profile",
+				joinColumns = @JoinColumn (name="ID_USER"),
+				inverseJoinColumns = @JoinColumn(name="ID_PROFILE") )
+	private List<Profiles> profiles;
 	
 
 	public Integer getId() {
@@ -158,41 +159,35 @@ public class User {
 	public void setAge(Integer age) {
 		this.age = age;
 	}
+	
+	
+	
+	
+
+	public List<Profiles> getProfiles() {
+		return profiles;
+	}
+
+	public void setProfiles(List<Profiles> profiles) {
+		this.profiles = profiles;
+	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", email=" + email + ", userName=" + userName + ", password="
-				+ password + ", status=" + status + ", aboutMe=" + aboutMe + ", dateRegistration=" + registration
-				+ ", category=" + category + ", avatar=" + avatar + ", age=" + age + "]";
+				+ password + ", status=" + status + ", aboutMe=" + aboutMe + ", registration=" + registration
+				+ ", category=" + category + ", avatar=" + avatar + ", age=" + age + ", profiles=" + profiles + "]";
 	}
 
-//	public List<Profiles> getProfiles() {
-//		return profiles;
-//	}
-//
-//	public void setProfiles(List<Profiles> profiles) {
-//		this.profiles = profiles;
-//	}
-	
-//	private void saveProfiles(Profiles temporalProfiles) {
-//		
-//		if(temporalProfiles == null){
-//			profiles = new LinkedList();
-//		}
-//		
-//		profiles.add(temporalProfiles);	
-//	}
-//	
-	
-	
-//	private List<Profiles> saveProfiles(List<Profiles> temporalProfiles) {
-//		
-//		if(temporalProfiles == null){
-//			profiles = new LinkedList();
-//		}
-//		
-//		return temporalProfiles;		
-//	}
+
+	public void saveProfiles(Profiles temProfiles) {
+		
+		if(profiles == null){
+			profiles = new LinkedList<Profiles>();
+		}
+		
+		profiles.add(temProfiles);		
+	}
 	
 	
 	

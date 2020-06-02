@@ -31,6 +31,7 @@
   <link href="../assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
+
 </head>
 
 <body class="dark-edition">
@@ -113,15 +114,23 @@
                           </div>
                         </div>
                       </div>
-                     <div class="col-md-6">
+                     <div class="col-md-4">
                         <div class="form-group">
                           <label>Edad:</label>
                           <div class="form-group">
                             <input type="text" class="form-control" th:field="*{age}" name="age">
                           </div>
                         </div>
-                      </div>                      
-
+                      </div>            
+                     <div class="col-md-2">
+                        <div class="form-group">
+					    <label th:each="perfil : ${profiles}">
+					      <input type="checkbox" />
+					      <span th:value="${perfil.id}"></span>
+					      <span th:text="${perfil.name}"></span>
+					    </label>
+                        </div>
+                      </div> 
 					<input type="file" name="archivoImagen" />
 
                     </div>
@@ -353,6 +362,7 @@
       });
     });
   </script>
+
 </body>
 
 </html>
