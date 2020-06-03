@@ -11,13 +11,34 @@ import javax.persistence.Id;
 public class GenderFilm {
 
 	
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "ID")
-	private Integer id;
+	@Column(name = "idGender")
+	private Integer idGender;
 	
-	@Column(name = "GENDER_NAME")
+	@Column(name = "gender")
 	private String gender;
+
+	
+
+	public Integer getIdGender() {
+		return idGender;
+	}
+
+	public void setIdGender(Integer idGender) {
+		this.idGender = idGender;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	
+	
 	
 }
 

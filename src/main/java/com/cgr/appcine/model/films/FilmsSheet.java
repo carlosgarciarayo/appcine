@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import com.cgr.appcine.model.Category;
@@ -14,8 +15,8 @@ import com.cgr.appcine.model.Category;
 public class FilmsSheet {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(nullable = false, length = 7)
 	private Integer id;
 
 	@Column(name = "TITLE")
@@ -42,8 +43,8 @@ public class FilmsSheet {
 	@Column(name = "DETAILS")
 	private String details;
 
-	@OneToOne
-	@JoinColumn(name = "ID_CATEGORY")
+	@ManyToOne
+	@JoinColumn(name="idGender",insertable = false, updatable = false)
 	private GenderFilm genderFilm;
 
 	public Integer getId() {
@@ -126,6 +127,7 @@ public class FilmsSheet {
 		this.genderFilm = genderFilm;
 	}
 
+	
 	@Override
 	public String toString() {
 		return "FilmsSheet [id=" + id + ", title=" + title + ", description=" + description + ", releaseDate="
