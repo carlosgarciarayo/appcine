@@ -10,7 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.cgr.appcine.controller.UserController;
-import com.cgr.appcine.model.Category;
 import com.cgr.appcine.model.Profiles;
 import com.cgr.appcine.repository.ProfilesRepository;
 
@@ -18,6 +17,7 @@ import com.cgr.appcine.repository.ProfilesRepository;
 public class ProfilesService {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
+
 
 	@Autowired
 	ProfilesRepository profilesRepository;

@@ -74,17 +74,14 @@ public class UserController {
 			}
 		}
 
-		
-			
-//		Profiles temProfiles = new Profiles();
-//		
-//		temProfiles.setId(2);
-//		temProfiles.setName("admin");
-//		
-//		user.saveProfiles(temProfiles);
+		//LOGGER.info("ID del perfil --> {}" + idPerfil);
+
 		
 		userSerice.saveUser(user);
 		attributes.addFlashAttribute("msg", "Registro Guardado");
+		
+		LOGGER.info("USUARIO --> {}" + user);
+		LOGGER.info("PERFILES --> {}" + user.getProfiles());
 
 		return "redirect:/admin/lista-de-usuarios";
 
@@ -194,7 +191,7 @@ public class UserController {
 
 		User user = userSerice.findById(id);
 
-		// model.addAttribute("categoryList", cat);
+		//model.addAttribute("categoryList", cat);
 		model.addAttribute("id", user.getId());
 		model.addAttribute("name", user.getName());
 		model.addAttribute("userName", user.getUserName());

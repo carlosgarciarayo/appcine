@@ -1,5 +1,6 @@
 package com.cgr.appcine.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -15,23 +16,23 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
-@Entity(name = "USER")
-public class User {
+
+@Entity
+@Table(name = "user")
+public class User implements Serializable{
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "ID")
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 	
 	@Column(name = "NAME")
 	private String name;
 	
-	@Column(name = "EMAIL")
-	private String email;
-	
-	@Column(name = "USER_NAME")
+
+	@Column(name = "USERNAME")
 	private String userName;
 	
 	@Column(name = "PASSWORD")
@@ -40,6 +41,10 @@ public class User {
 	
 	@Column(name = "STATUS")
 	private String status;
+	
+	@Column(name = "EMAIL")
+	private String email;
+	
 	
 	@Column(name = "ABOUT_ME")
 	private String aboutMe;
@@ -52,17 +57,23 @@ public class User {
 	@JoinColumn(name = "ID_CATEGORY")
 	private Category category;
 	
+	@OneToOne
+	@JoinColumn(name = "ID_ADDRESS")
+	private UserAddress userAddress;
+	
 	@Column(name = "AVATAR")
 	private String avatar;
+	
 	
 	@Column(name = "AGE")
 	private Integer age;
 	
 	
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable( name = "user_profile",
-				joinColumns = @JoinColumn (name="ID_USER"),
-				inverseJoinColumns = @JoinColumn(name="ID_PROFILE") )
+
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable( name = "pk_user_profile",
+	joinColumns = @JoinColumn (name="ID_USER"),
+	inverseJoinColumns = @JoinColumn(name="ID_PROFILE") )
 	private List<Profiles> profiles;
 	
 
@@ -159,10 +170,14 @@ public class User {
 	public void setAge(Integer age) {
 		this.age = age;
 	}
-	
-	
-	
-	
+
+	public UserAddress getUserAddress() {
+		return userAddress;
+	}
+
+	public void setUserAddress(UserAddress userAddress) {
+		this.userAddress = userAddress;
+	}
 
 	public List<Profiles> getProfiles() {
 		return profiles;
@@ -172,14 +187,7 @@ public class User {
 		this.profiles = profiles;
 	}
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", email=" + email + ", userName=" + userName + ", password="
-				+ password + ", status=" + status + ", aboutMe=" + aboutMe + ", registration=" + registration
-				+ ", category=" + category + ", avatar=" + avatar + ", age=" + age + ", profiles=" + profiles + "]";
-	}
-
-
+	
 	public void saveProfiles(Profiles temProfiles) {
 		
 		if(profiles == null){
@@ -189,6 +197,16 @@ public class User {
 		profiles.add(temProfiles);		
 	}
 	
+	
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", email=" + email + ", userName=" + userName + ", password="
+				+ password + ", status=" + status + ", aboutMe=" + aboutMe + ", registration=" + registration
+				+ ", category=" + category + ", userAddress=" + userAddress + ", avatar=" + avatar + ", age=" + age
+				+ ", profiles=" + profiles + "]";
+	}
+	
+
 	
 	
 	

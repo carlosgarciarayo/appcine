@@ -17,7 +17,6 @@ import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
 import com.cgr.appcine.model.Category;
-import com.cgr.appcine.model.Profiles;
 import com.cgr.appcine.model.User;
 import com.cgr.appcine.repository.CategoryRepository;
 import com.cgr.appcine.repository.UserRepository;
@@ -108,13 +107,13 @@ public class UserService{
 	
 	
 	
-	public void saveProfile(List<Profiles> temporalProfiles) {
-		
-		
-		
-		
-	}
-	
+//	public void saveProfile(List<Profiles> temporalProfiles) {
+//		
+//		
+//		
+//		
+//	}
+//	
 	
 	
 

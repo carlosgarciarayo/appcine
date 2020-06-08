@@ -7,7 +7,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.cgr.appcine.model.Category;
-import com.cgr.appcine.model.Profiles;
 import com.cgr.appcine.model.User;
 
 
