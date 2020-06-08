@@ -19,7 +19,11 @@ public class DatabaseWebSecurity extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		
 		auth.jdbcAuthentication().dataSource(dataSource)
-		.usersByUsernameQuery("select username, password, status,  from user where username=?");
+		.usersByUsernameQuery("select username, password, status,  from user where username=?")
+		.authoritiesByUsernameQuery("select u.username, p.profiles from pk_user_profile up " +
+			"inner join user u on u.id = up.idUser " +
+			"inner join profiles p on p.id = up.idProfile " +
+			"where u.username = ?");
 		
 	}
 }
