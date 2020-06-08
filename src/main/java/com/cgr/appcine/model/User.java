@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -56,6 +55,7 @@ public class User implements Serializable{
 	@OneToOne
 	@JoinColumn(name = "ID_CATEGORY")
 	private Category category;
+	
 	
 	@OneToOne
 	@JoinColumn(name = "ID_ADDRESS")
@@ -171,13 +171,7 @@ public class User implements Serializable{
 		this.age = age;
 	}
 
-	public UserAddress getUserAddress() {
-		return userAddress;
-	}
 
-	public void setUserAddress(UserAddress userAddress) {
-		this.userAddress = userAddress;
-	}
 
 	public List<Profiles> getProfiles() {
 		return profiles;
