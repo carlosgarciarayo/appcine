@@ -53,13 +53,13 @@ public class User implements Serializable{
 	@Column(name = "REGISTRATION_DATE")
 	private Date registration;
 	
-	@OneToOne
-	@JoinColumn(name = "ID_CATEGORY")
-	private Category category;
-	
-	@OneToOne
-	@JoinColumn(name = "ID_ADDRESS")
-	private UserAddress userAddress;
+//	@OneToOne
+//	@JoinColumn(name = "ID_CATEGORY")
+//	private Category category;
+//	
+//	@OneToOne
+//	@JoinColumn(name = "ID_ADDRESS")
+//	private UserAddress userAddress;
 	
 	@Column(name = "AVATAR")
 	private String avatar;
@@ -146,13 +146,13 @@ public class User implements Serializable{
 
 
 	
-	public Category getCategory() {
-		return category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
-	}
+//	public Category getCategory() {
+//		return category;
+//	}
+//
+//	public void setCategory(Category category) {
+//		this.category = category;
+//	}
 
 	
 	public String getAvatar() {
@@ -171,13 +171,13 @@ public class User implements Serializable{
 		this.age = age;
 	}
 
-	public UserAddress getUserAddress() {
-		return userAddress;
-	}
-
-	public void setUserAddress(UserAddress userAddress) {
-		this.userAddress = userAddress;
-	}
+//	public UserAddress getUserAddress() {
+//		return userAddress;
+//	}
+//
+//	public void setUserAddress(UserAddress userAddress) {
+//		this.userAddress = userAddress;
+//	}
 
 	public List<Profiles> getProfiles() {
 		return profiles;
@@ -198,13 +198,13 @@ public class User implements Serializable{
 	}
 	
 	
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", email=" + email + ", userName=" + userName + ", password="
-				+ password + ", status=" + status + ", aboutMe=" + aboutMe + ", registration=" + registration
-				+ ", category=" + category + ", userAddress=" + userAddress + ", avatar=" + avatar + ", age=" + age
-				+ ", profiles=" + profiles + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "User [id=" + id + ", name=" + name + ", email=" + email + ", userName=" + userName + ", password="
+//				+ password + ", status=" + status + ", aboutMe=" + aboutMe + ", registration=" + registration
+//				+ ", category=" + category + ", userAddress=" + userAddress + ", avatar=" + avatar + ", age=" + age
+//				+ ", profiles=" + profiles + "]";
+//	}
 	
 
 	
