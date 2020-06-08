@@ -53,13 +53,13 @@ public class User implements Serializable{
 	@Column(name = "REGISTRATION_DATE")
 	private Date registration;
 	
-//	@OneToOne
-//	@JoinColumn(name = "ID_CATEGORY")
-//	private Category category;
-//	
-//	@OneToOne
-//	@JoinColumn(name = "ID_ADDRESS")
-//	private UserAddress userAddress;
+	@OneToOne
+	@JoinColumn(name = "ID_CATEGORY")
+	private Category category;
+	
+	@OneToOne
+	@JoinColumn(name = "ID_ADDRESS")
+	private UserAddress userAddress;
 	
 	@Column(name = "AVATAR")
 	private String avatar;
@@ -70,11 +70,11 @@ public class User implements Serializable{
 	
 	
 
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable( name = "pk_user_profile",
-	joinColumns = @JoinColumn (name="ID_USER"),
-	inverseJoinColumns = @JoinColumn(name="ID_PROFILE") )
-	private List<Profiles> profiles;
+//	@ManyToMany(fetch = FetchType.EAGER)
+//	@JoinTable( name = "pk_user_profile",
+//	joinColumns = @JoinColumn (name="ID_USER"),
+//	inverseJoinColumns = @JoinColumn(name="ID_PROFILE") )
+//	private List<Profiles> profiles;
 	
 
 	public Integer getId() {
@@ -146,13 +146,13 @@ public class User implements Serializable{
 
 
 	
-//	public Category getCategory() {
-//		return category;
-//	}
-//
-//	public void setCategory(Category category) {
-//		this.category = category;
-//	}
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
 
 	
 	public String getAvatar() {
@@ -171,33 +171,33 @@ public class User implements Serializable{
 		this.age = age;
 	}
 
-//	public UserAddress getUserAddress() {
-//		return userAddress;
+	public UserAddress getUserAddress() {
+		return userAddress;
+	}
+
+	public void setUserAddress(UserAddress userAddress) {
+		this.userAddress = userAddress;
+	}
+
+//	public List<Profiles> getProfiles() {
+//		return profiles;
 //	}
 //
-//	public void setUserAddress(UserAddress userAddress) {
-//		this.userAddress = userAddress;
+//	public void setProfiles(List<Profiles> profiles) {
+//		this.profiles = profiles;
 //	}
-
-	public List<Profiles> getProfiles() {
-		return profiles;
-	}
-
-	public void setProfiles(List<Profiles> profiles) {
-		this.profiles = profiles;
-	}
-
-	
-	public void saveProfiles(Profiles temProfiles) {
-		
-		if(profiles == null){
-			profiles = new LinkedList<Profiles>();
-		}
-		
-		profiles.add(temProfiles);		
-	}
-	
-	
+//
+//	
+//	public void saveProfiles(Profiles temProfiles) {
+//		
+//		if(profiles == null){
+//			profiles = new LinkedList<Profiles>();
+//		}
+//		
+//		profiles.add(temProfiles);		
+//	}
+//	
+//	
 //	@Override
 //	public String toString() {
 //		return "User [id=" + id + ", name=" + name + ", email=" + email + ", userName=" + userName + ", password="
@@ -205,7 +205,7 @@ public class User implements Serializable{
 //				+ ", category=" + category + ", userAddress=" + userAddress + ", avatar=" + avatar + ", age=" + age
 //				+ ", profiles=" + profiles + "]";
 //	}
-	
+//	
 
 	
 	

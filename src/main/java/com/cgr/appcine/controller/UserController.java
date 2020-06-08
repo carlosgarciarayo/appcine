@@ -81,7 +81,6 @@ public class UserController {
 		attributes.addFlashAttribute("msg", "Registro Guardado");
 		
 		LOGGER.info("USUARIO --> {}" + user);
-		LOGGER.info("PERFILES --> {}" + user.getProfiles());
 
 		return "redirect:/admin/lista-de-usuarios";
 
@@ -190,6 +189,7 @@ public class UserController {
 	public String editCategory(@PathVariable("id") int id, Model model) {
 
 		User user = userSerice.findById(id);
+
 
 		//model.addAttribute("categoryList", cat);
 		model.addAttribute("id", user.getId());
