@@ -70,11 +70,11 @@ public class User implements Serializable{
 	
 	
 
-//	@ManyToMany(fetch = FetchType.EAGER)
-//	@JoinTable( name = "pk_user_profile",
-//	joinColumns = @JoinColumn (name="ID_USER"),
-//	inverseJoinColumns = @JoinColumn(name="ID_PROFILE") )
-//	private List<Profiles> profiles;
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable( name = "pk_user_profile",
+	joinColumns = @JoinColumn (name="ID_USER"),
+	inverseJoinColumns = @JoinColumn(name="ID_PROFILE") )
+	private List<Profiles> profiles;
 	
 
 	public Integer getId() {
@@ -179,33 +179,33 @@ public class User implements Serializable{
 		this.userAddress = userAddress;
 	}
 
-//	public List<Profiles> getProfiles() {
-//		return profiles;
-//	}
-//
-//	public void setProfiles(List<Profiles> profiles) {
-//		this.profiles = profiles;
-//	}
-//
-//	
-//	public void saveProfiles(Profiles temProfiles) {
-//		
-//		if(profiles == null){
-//			profiles = new LinkedList<Profiles>();
-//		}
-//		
-//		profiles.add(temProfiles);		
-//	}
-//	
-//	
-//	@Override
-//	public String toString() {
-//		return "User [id=" + id + ", name=" + name + ", email=" + email + ", userName=" + userName + ", password="
-//				+ password + ", status=" + status + ", aboutMe=" + aboutMe + ", registration=" + registration
-//				+ ", category=" + category + ", userAddress=" + userAddress + ", avatar=" + avatar + ", age=" + age
-//				+ ", profiles=" + profiles + "]";
-//	}
-//	
+	public List<Profiles> getProfiles() {
+		return profiles;
+	}
+
+	public void setProfiles(List<Profiles> profiles) {
+		this.profiles = profiles;
+	}
+
+	
+	public void saveProfiles(Profiles temProfiles) {
+		
+		if(profiles == null){
+			profiles = new LinkedList<Profiles>();
+		}
+		
+		profiles.add(temProfiles);		
+	}
+	
+	
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", email=" + email + ", userName=" + userName + ", password="
+				+ password + ", status=" + status + ", aboutMe=" + aboutMe + ", registration=" + registration
+				+ ", category=" + category + ", userAddress=" + userAddress + ", avatar=" + avatar + ", age=" + age
+				+ ", profiles=" + profiles + "]";
+	}
+	
 
 	
 	
