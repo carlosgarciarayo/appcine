@@ -1,6 +1,7 @@
 package com.cgr.appcine.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -8,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -30,8 +32,13 @@ import com.cgr.appcine.util.Utileria;
 @Controller
 @RequestMapping(path = "/admin")
 public class UserController {
+
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
+	
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+	
 	@Autowired
 	UserService userSerice;
 
@@ -76,6 +83,24 @@ public class UserController {
 
 		//LOGGER.info("ID del perfil --> {}" + idPerfil);
 
+		
+		// Recuperamos el password en texto plano
+		String pwdPlano = user.getPassword();
+		
+		// Encriptamos el pwd BCryptPasswordEncoder
+		String pwdEncriptado = passwordEncoder.encode(pwdPlano); 
+		
+		// Hacemos un set al atributo password (ya viene encriptado)
+		user.setPassword(pwdEncriptado);	
+		//user.setStatus(1); // Activado por defecto
+		//user.setFechaRegistro(new Date()); // Fecha de Registro, la fecha actual del servidor
+		
+		// Creamos el Perfil que le asignaremos al usuario nuevo
+		Profiles perfil = new Profiles();
+		//perfil.setId(3); // Perfil USUARIO
+		//user.agregar(perfil);
+		
+		
 		
 		userSerice.saveUser(user);
 		attributes.addFlashAttribute("msg", "Registro Guardado");

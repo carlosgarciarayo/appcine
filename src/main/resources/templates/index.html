@@ -29,8 +29,34 @@
 <body>
   <div class="wrapper">
 
+    <!-- HEADER -->
+    
+    <header>
+      <div class="netflixLogo">
+        <a id="logo" href="#home"><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/logo.PNG?raw=true" alt="Logo Image"></a>
+      </div>      
+      <nav class="main-nav">                
+        <a href="#home">Inicio</a>
+        <a href="#tvShows">Series TV</a>
+        <a href="#movies">Películas</a>
+        <a href="#originals">Originales</a>
+        <a href="#">Mi lista</a>
+      </nav>
+      <nav class="sub-nav">
+        <a href="#"><i class="fas fa-search sub-nav-logo"></i></a>
+        <a href="#"><i class="fas fa-bell sub-nav-logo"></i></a>
+        <a th:href="@{/login}">Acceder</a>                        
+        <a th:href="@{/logout}">Desconectar</a>                        
+      </nav>      
+    </header>
+   
+    <!-- END OF HEADER -->    
+
+
+
+
     <!-- Carousel Slider  -->     
-	
+<section class="main-container" >	
 	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 	  <ol class="carousel-indicators">
 	    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -62,30 +88,10 @@
 	    <span class="sr-only">Next</span>
 	  </a>
 	</div>     
-   
+ </section>  
     <!-- end Carousel Slider -->
     
-    <!-- HEADER -->
-    
-    <header>
-      <div class="netflixLogo">
-        <a id="logo" href="#home"><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/logo.PNG?raw=true" alt="Logo Image"></a>
-      </div>      
-      <nav class="main-nav">                
-        <a href="#home">Inicio</a>
-        <a href="#tvShows">Series TV</a>
-        <a href="#movies">Películas</a>
-        <a href="#originals">Originales</a>
-        <a href="#">Mi lista</a>
-      </nav>
-      <nav class="sub-nav">
-        <a href="#"><i class="fas fa-search sub-nav-logo"></i></a>
-        <a href="#"><i class="fas fa-bell sub-nav-logo"></i></a>
-        <a href="#">Acceder</a>        
-      </nav>      
-    </header>
-   
-    <!-- END OF HEADER -->    
+
 
     <!-- MAIN CONTAINER -->
     <section class="main-container" >
