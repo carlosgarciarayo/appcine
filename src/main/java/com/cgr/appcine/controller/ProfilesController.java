@@ -30,7 +30,7 @@ public class ProfilesController {
 		
 		List<Profiles> profileList = profilesService.findAll();
 		
-		model.addAttribute("prifiles", profileList);
+		model.addAttribute("perfiles", profileList);
 		
 		 return "admin/tablesPerfiles";
 		

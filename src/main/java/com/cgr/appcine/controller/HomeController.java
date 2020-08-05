@@ -7,23 +7,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(path = {"home","/",""})
 public class HomeController {
 
 	
 
-	
-	@GetMapping("/catelera")
-	public String home() {
-		
-		return "templates/index";
-	}
-	
-	@GetMapping("/registrarse")
-	public String regsitration() {
-		
-		return "admin/login";
-	}
 
+	@RequestMapping(path = "/peliculasFicha")
+	public String homeFichaPeliculas() {
+		
+		return "films/formPelicula";
+	}
 	
 }
