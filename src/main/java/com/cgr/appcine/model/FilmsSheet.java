@@ -1,58 +1,52 @@
-/*
-package com.cgr.appcine.model.films;
+package com.cgr.appcine.model;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
-import com.cgr.appcine.model.Category;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity(name = "FILM_SHEET")
+@Document(collection = "films")
 public class FilmsSheet {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(nullable = false, length = 7)
-	private Integer id;
-
+	private String id;
 	@Column(name = "TITLE")
 	private String title;
-
-	@Column(name = "DESCRIPTION")
 	private String description;
-
-	@Column(name = "RELEASE_DATE")
 	private int releaseDate;
-
-	@Column(name = "RENTAL_PRICE")
 	private double rentalPrice;
-
-	@Column(name = "STATUS")
 	private int status;
-
-	@Column(name = "OUTSTANDING")
 	private int outstanding;
-
-	@Column(name = "IMAGE")
 	private String image;
-
-	@Column(name = "DETAILS")
 	private String details;
 
-	@ManyToOne
-	@JoinColumn(name="idGender",insertable = false, updatable = false)
-	private GenderFilm genderFilm;
+	public FilmsSheet() {
+	}
 
-	public Integer getId() {
+	public FilmsSheet(String title, String description, int outstanding) {
+		this.title = title;
+		this.description = description;
+		this.outstanding = outstanding;
+	}
+
+	public FilmsSheet(String id, String title, String description, int releaseDate, double rentalPrice, int status,
+			int outstanding, String image, String details) {
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.releaseDate = releaseDate;
+		this.rentalPrice = rentalPrice;
+		this.status = status;
+		this.outstanding = outstanding;
+		this.image = image;
+		this.details = details;
+	}
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -120,21 +114,11 @@ public class FilmsSheet {
 		this.details = details;
 	}
 
-	public GenderFilm getGenderFilm() {
-		return genderFilm;
-	}
-
-	public void setGenderFilm(GenderFilm genderFilm) {
-		this.genderFilm = genderFilm;
-	}
-
-	
 	@Override
 	public String toString() {
 		return "FilmsSheet [id=" + id + ", title=" + title + ", description=" + description + ", releaseDate="
 				+ releaseDate + ", rentalPrice=" + rentalPrice + ", status=" + status + ", outstanding=" + outstanding
-				+ ", image=" + image + ", details=" + details + ", genderFilm=" + genderFilm + "]";
+				+ ", image=" + image + ", details=" + details + "]";
 	}
 
 }
-*/
