@@ -5,12 +5,11 @@ import javax.persistence.Column;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "films")
+@Document(collection = "filmSheet")
 public class FilmsSheet {
 
 	@Id
 	private String id;
-	@Column(name = "TITLE")
 	private String title;
 	private String description;
 	private int releaseDate;
@@ -27,6 +26,12 @@ public class FilmsSheet {
 		this.title = title;
 		this.description = description;
 		this.outstanding = outstanding;
+	}
+	public FilmsSheet(String title, String description, int outstanding,int status) {
+		this.title = title;
+		this.description = description;
+		this.outstanding = outstanding;
+		this.status = status;
 	}
 
 	public FilmsSheet(String id, String title, String description, int releaseDate, double rentalPrice, int status,

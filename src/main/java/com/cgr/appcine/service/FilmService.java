@@ -15,8 +15,8 @@ public class FilmService {
 	private FilmRepository filmRepository;
 	
 	//Create operation
-	public FilmsSheet create(String title,String description, int outstanding) {
-		return filmRepository.save(new FilmsSheet(title, description, outstanding));
+	public FilmsSheet create(String title,String description, int outstanding, int status) {
+		return filmRepository.save(new FilmsSheet(title, description, outstanding,status));
 	}
 	//Retrieve operation
 	public List<FilmsSheet> getAll(){
@@ -37,7 +37,7 @@ public class FilmService {
 		filmRepository.deleteAll();
 	}
 	public void delete(String title) {
-		FilmsSheet p = filmRepository.findByTitle(title);
-		filmRepository.delete(p);
+		FilmsSheet FilmsSheet = filmRepository.findByTitle(title);
+		filmRepository.delete(FilmsSheet);
 	}
 }

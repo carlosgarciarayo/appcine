@@ -18,8 +18,8 @@ public class filmController {
 	private FilmService filmService;
 	
 	@RequestMapping("/create")
-	public String create(@RequestParam String title, @RequestParam String description, @RequestParam int outstanding) {
-		FilmsSheet filmsSheet = filmService.create(title, description, outstanding);
+	public String create(@RequestParam String title, @RequestParam String description, @RequestParam int outstanding, @RequestParam int status) {
+		FilmsSheet filmsSheet = filmService.create(title, description, outstanding,status);
 		return filmsSheet.toString();
 	}
 	
