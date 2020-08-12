@@ -3,6 +3,8 @@ package com.cgr.appcine.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,13 +12,21 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cgr.appcine.model.FilmsSheet;
 import com.cgr.appcine.service.FilmService;
 
-//@Controller
-@RestController
+
+//@RestController
+@Controller
 public class filmController {
 
 	@Autowired
 	private FilmService filmService;
 	
+	@GetMapping(path = "/ficha-pelicula")
+	public String categoryForm() {
+
+		return "films/filmSheet";
+
+	}
+
 	@RequestMapping("/create")
 	public String create(@RequestParam String title, @RequestParam String description, @RequestParam int outstanding, @RequestParam int status) {
 		FilmsSheet filmsSheet = filmService.create(title, description, outstanding,status);
