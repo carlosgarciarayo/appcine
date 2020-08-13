@@ -18,6 +18,7 @@ import com.cgr.appcine.service.FilmService;
 @RestController
 public class filmController {
 
+	
 	@Autowired
 	private FilmService filmService;
 	
