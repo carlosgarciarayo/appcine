@@ -13,8 +13,9 @@ import com.cgr.appcine.model.FilmsSheet;
 import com.cgr.appcine.service.FilmService;
 
 
-//@RestController
-@Controller
+
+//@Controller
+@RestController
 public class filmController {
 
 	@Autowired
