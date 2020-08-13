@@ -14,8 +14,8 @@ import com.cgr.appcine.service.FilmService;
 
 
 
-//@Controller
-@RestController
+//@RestController
+@Controller
 public class filmController {
 
 	
