@@ -124,8 +124,8 @@
 		</div>
 	    
 	    <div class="col-sm-6">
-			<h2>
-			  Skyfall: Quantum of Spectre
+			<h2 th:text="${mov.name}"></h6>
+			  <!-- Skyfall: Quantum of Spectre -->
 			  <small class="text-muted">2005</small>
 			</h2>
 		<br>
@@ -136,8 +136,7 @@
 		  </div>
 		  
 		  <br>
-			<p class="h6">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imp</p>
-		<h6><small class="text-muted"><b>CAST</b></small></h6>	  
+			<p th:text="${mov.description}" class="h6"><h6><small class="text-muted"><b>CAST</b></small></h6>	  
 		<table class="table">
 		  <tbody>
 		    <tr>		      

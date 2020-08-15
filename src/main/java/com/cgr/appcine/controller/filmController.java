@@ -3,29 +3,65 @@ package com.cgr.appcine.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.client.RestTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.cgr.appcine.model.FilmsSheet;
+import com.cgr.appcine.model.Movie;
+import com.cgr.appcine.model.MovieSummary;
 import com.cgr.appcine.service.FilmService;
 
 
 
-//@RestController
 @Controller
+@RequestMapping(path = "/ficha-peliculas")
 public class filmController {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(filmController.class);
 	
 	@Autowired
 	private FilmService filmService;
 	
+	
+    @Value("${api.key}")
+    private String apiKey;
+
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @GetMapping(path = "/{movieId}")
+    public String getMovieInfo(@PathVariable("movieId") String movieId,Model model) {
+        
+    	MovieSummary movieSummary = restTemplate.getForObject("https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" +  apiKey, MovieSummary.class);
+        
+    	LOGGER.info("movieSummary -->" + movieSummary);
+    	
+    	Movie movie = new Movie(movieId, movieSummary.getTitle(), movieSummary.getOverview());
+    	
+    	model.addAttribute("mov",movie);
+    	
+    	LOGGER.info("Movie -->" +  movie);
+    	
+    	return "film/filmSheet";
+    	
+    	
+
+    }
+	
+	
+	
 	@GetMapping(path = "/ficha-pelicula")
 	public String categoryForm() {
 
-		return "films/filmSheet";
+		return "film/filmSheet";
 
 	}
 
