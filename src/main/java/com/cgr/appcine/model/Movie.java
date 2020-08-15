@@ -6,14 +6,19 @@ public class Movie {
 	private String movieId;
     private String name;
     private String description;
+    private String poster;
 
-    public Movie(String movieId, String name, String description) {
-        this.movieId = movieId;
-        this.name = name;
-        this.description = description;
-    }
 
-    public String getMovieId() {
+
+    public Movie(String movieId, String name, String description, String poster) {
+
+		this.movieId = movieId;
+		this.name = name;
+		this.description = description;
+		this.poster = poster;
+	}
+
+	public String getMovieId() {
         return movieId;
     }
 
@@ -37,10 +42,22 @@ public class Movie {
         this.description = description;
     }
 
+    
+	public String getPoster() {
+		return poster;
+	}
+
+	public void setPoster(String poster) {
+		this.poster = poster;
+	}
+
 	@Override
 	public String toString() {
-		return "Movie [movieId=" + movieId + ", name=" + name + ", description=" + description + "]";
+		return "Movie [movieId=" + movieId + ", name=" + name + ", description=" + description + ", poster=" + poster
+				+ "]";
 	}
+
+
     
     
 }

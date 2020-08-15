@@ -44,7 +44,7 @@ public class filmController {
         
     	LOGGER.info("movieSummary -->" + movieSummary);
     	
-    	Movie movie = new Movie(movieId, movieSummary.getTitle(), movieSummary.getOverview());
+    	Movie movie = new Movie(movieId, movieSummary.getTitle(), movieSummary.getOverview(),movieSummary.getPoster_path());
     	
     	model.addAttribute("mov",movie);
     	
