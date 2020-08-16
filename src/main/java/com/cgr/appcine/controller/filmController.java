@@ -33,6 +33,9 @@ public class filmController {
 	
     @Value("${api.key}")
     private String apiKey;
+    
+    @Value("${api.language}")
+    private String language;
 
     @Autowired
     private RestTemplate restTemplate;
@@ -40,7 +43,7 @@ public class filmController {
     @GetMapping(path = "/{movieId}")
     public String getMovieInfo(@PathVariable("movieId") String movieId,Model model) {
         
-    	MovieSummary movieSummary = restTemplate.getForObject("https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" +  apiKey, MovieSummary.class);
+    	MovieSummary movieSummary = restTemplate.getForObject("https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" +  apiKey +  "&language=" +  language,  MovieSummary.class);
         
     	LOGGER.info("movieSummary -->" + movieSummary);
     	
