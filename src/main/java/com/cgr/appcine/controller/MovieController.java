@@ -23,37 +23,37 @@ import com.cgr.appcine.service.MovieService;
 @RequestMapping(path = "/ficha-films")
 public class MovieController {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(MovieController.class);
+//	private static final Logger LOGGER = LoggerFactory.getLogger(MovieController.class);
+//
+//	@Autowired
+//	private MovieService movieService;
+//
+//	@Value("${api.key}")
+//	private String apiKey;
+//
+//	@Value("${api.language}")
+//	private String language;
+//
+//	@Autowired
+//	private RestTemplate restTemplate;
 
-	@Autowired
-	private MovieService movieService;
-
-	@Value("${api.key}")
-	private String apiKey;
-
-	@Value("${api.language}")
-	private String language;
-
-	@Autowired
-	private RestTemplate restTemplate;
-
-	@GetMapping(path = "/{movieId}")
-	public String getMovieInfo(@PathVariable("movieId") String movieId, Model model) {
-
-		MovieSummary movieSummary = restTemplate.getForObject(
-				"https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" + apiKey + "&language=" + language,
-				MovieSummary.class);
-
-		LOGGER.info("movieSummary -->" + movieSummary);
-
-		Movie movie = movieService.create(movieId, movieSummary.getTitle(), movieSummary.getOverview(),
-				movieSummary.getPoster_path());
-
-		model.addAttribute("mov", movie);
-
-		return "film/filmSheet";
-
-	}
+//	@GetMapping(path = "/{movieId}")
+//	public String getMovieInfo(@PathVariable("movieId") String movieId, Model model) {
+//
+//		MovieSummary movieSummary = restTemplate.getForObject(
+//				"https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" + apiKey + "&language=" + language,
+//				MovieSummary.class);
+//
+//		LOGGER.info("movieSummary -->" + movieSummary);
+//
+//		Movie movie = movieService.create(movieId, movieSummary.getTitle(), movieSummary.getOverview(),
+//				movieSummary.getPoster_path());
+//
+//		model.addAttribute("mov", movie);
+//
+//		return "film/filmSheet";
+//
+//	}
 
 //	
 //	@GetMapping(path = "/ficha-pelicula")

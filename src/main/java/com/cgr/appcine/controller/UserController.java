@@ -7,6 +7,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -19,12 +20,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.cgr.appcine.model.Movie;
+import com.cgr.appcine.model.MovieSummary;
 import com.cgr.appcine.model.Profiles;
 import com.cgr.appcine.model.User;
 import com.cgr.appcine.service.CategoryService;
+import com.cgr.appcine.service.FilmService;
+import com.cgr.appcine.service.MovieService;
 import com.cgr.appcine.service.ProfilesService;
 import com.cgr.appcine.service.UserService;
 import com.cgr.appcine.util.Utileria;
@@ -35,22 +41,45 @@ public class UserController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
-	
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
 	@Autowired
 	UserService userSerice;
 
 	@Autowired
 	CategoryService categoryService;
-	
+
 	@Autowired
 	ProfilesService profilesService;
 
-	List<User> listUser = new ArrayList();
+	@Autowired
+	private MovieService movieService;
 
-	Page<User> listaPage;
+	@Autowired
+	private RestTemplate restTemplate;
+
+	@Value("${api.key}")
+	private String apiKey;
+
+	@Value("${api.language}")
+	private String language;
+
+	@GetMapping(path = "/save-movie/{movieId}")
+	public String getMovieInfo(@PathVariable("movieId") String movieId, Model model) {
+
+		MovieSummary movieSummary = restTemplate.getForObject("https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" 
+									+ apiKey + "&language=" + language,	MovieSummary.class);
+
+		LOGGER.info("movieSummary -->" + movieSummary);
+
+		Movie movie = movieService.create(movieId, movieSummary.getTitle(), movieSummary.getOverview(),	movieSummary.getPoster_path());
+
+		model.addAttribute("mov", movie);
+
+		return "film/filmSheet";
+
+	}
 
 	@GetMapping(path = "/formulario-registro")
 	public String formRegistre(User user, Model model) {
@@ -81,30 +110,28 @@ public class UserController {
 			}
 		}
 
-		//LOGGER.info("ID del perfil --> {}" + idPerfil);
+		// LOGGER.info("ID del perfil --> {}" + idPerfil);
 
-		
 		// Recuperamos el password en texto plano
 		String pwdPlano = user.getPassword();
-		
+
 		// Encriptamos el pwd BCryptPasswordEncoder
-		String pwdEncriptado = passwordEncoder.encode(pwdPlano); 
-		
+		String pwdEncriptado = passwordEncoder.encode(pwdPlano);
+
 		// Hacemos un set al atributo password (ya viene encriptado)
-		user.setPassword(pwdEncriptado);	
-		//user.setStatus(1); // Activado por defecto
-		//user.setFechaRegistro(new Date()); // Fecha de Registro, la fecha actual del servidor
-		
+		user.setPassword(pwdEncriptado);
+		// user.setStatus(1); // Activado por defecto
+		// user.setFechaRegistro(new Date()); // Fecha de Registro, la fecha actual del
+		// servidor
+
 		// Creamos el Perfil que le asignaremos al usuario nuevo
 		Profiles perfil = new Profiles();
-		//perfil.setId(3); // Perfil USUARIO
-		//user.agregar(perfil);
-		
-		
-		
+		// perfil.setId(3); // Perfil USUARIO
+		// user.agregar(perfil);
+
 		userSerice.saveUser(user);
 		attributes.addFlashAttribute("msg", "Registro Guardado");
-		
+
 		LOGGER.info("USUARIO --> {}" + user);
 
 		return "redirect:/admin/lista-de-usuarios";
@@ -141,6 +168,8 @@ public class UserController {
 //		return "admin/tablesUser";
 //	}
 
+	Page<User> listaPage;
+
 	@GetMapping(path = "/lista-de-usuarios")
 	public String mostrarIndexPaginado(Model model, Pageable page) {
 
@@ -150,6 +179,8 @@ public class UserController {
 		return "admin/tablesUser";
 
 	}
+
+	List<User> listUser = new ArrayList();
 
 	@GetMapping(path = "/lista-de-usuarios/order")
 	public String searchAllOrderByName(Model model) {
@@ -215,8 +246,7 @@ public class UserController {
 
 		User user = userSerice.findById(id);
 
-
-		//model.addAttribute("categoryList", cat);
+		// model.addAttribute("categoryList", cat);
 		model.addAttribute("id", user.getId());
 		model.addAttribute("name", user.getName());
 		model.addAttribute("userName", user.getUserName());
