@@ -15,7 +15,7 @@ public class HomeController {
 	@RequestMapping(path = "/peliculasFicha")
 	public String homeFichaPeliculas() {
 		
-		return "films/formPelicula";
+		return "sinUsar/dashboard.html";
 	}
 	
 }
