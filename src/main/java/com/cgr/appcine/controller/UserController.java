@@ -88,7 +88,8 @@ public class UserController {
 
 		LOGGER.info("movieSummary -->" + movieSummary);
 
-		Movie movie = movieService.create(movieId, movieSummary.getTitle(), movieSummary.getOverview(),	movieSummary.getPoster_path());
+		Movie movie = movieService.create(movieId, movieSummary.getTitle(), movieSummary.getOverview(),	
+				movieSummary.getPoster_path(), movieSummary.getStatus(), movieSummary.getGenres());
 
 		model.addAttribute("mov", movie);
 
@@ -96,6 +97,50 @@ public class UserController {
 
 	}
 
+	
+	
+	@GetMapping(path = "/search-movie/{titleMovie}")
+	public Movie getSearchMovie(@PathVariable("titleMovie") String titleMovie) {
+//https://api.themoviedb.org/3/search/movie?api_key=619f9eadef12602c3404f85bf64cab34&language=en-US&query=25466&page=1&include_adult=false
+		MovieSummary movieSummary = restTemplate.getForObject("https://api.themoviedb.org/3/search/movie" + "?api_key=" 
+									+ apiKey + "&language=" + language + "&query=" + titleMovie + "&page=1&include_adult=false",MovieSummary.class);
+
+		LOGGER.info("movieSummary -->" + movieSummary);
+		
+		List<Movie> resultadosBusqueda = new ArrayList<Movie>();
+			
+		
+
+		Movie movie = movieService.search(titleMovie);
+
+		resultadosBusqueda.add(movie);
+		
+		LOGGER.info("MOVIE -->" + movie);
+
+		
+		return movie;
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@GetMapping(path = "/formulario-registro")
 	public String formRegistre(User user, Model model) {
 

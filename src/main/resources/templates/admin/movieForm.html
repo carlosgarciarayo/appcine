@@ -54,28 +54,65 @@
                 <div class="card-body">
                   <form th:action="@{/categorias/save}" method="post">
                     <div class="row">
-	                      <div class="col-md-5">
+	                      <div class="col-md-8">
 	                        <div class="form-group">
-	                          <label class="bmd-label-floating">Nombre de la categoria</label>
+	                          <label class="bmd-label-floating">Nombre de la película</label>
 	                          <input  type="text" name="name" class="form-control">
 	                        </div>
 	                      </div>
-	                      <div class="col-md-3">
-	                        <div class="form-group">
-	                          <label class="bmd-label-floating">Descripcion de la categoria</label>
-	                          <input type="text" name="description" class="form-control">
-	                        </div>
-	                      </div>
-
-	                    <button type="submit" class="btn btn-primary pull-right">Enviar</button>
-	                    <div class="clearfix"></div>
-                    </div>
+	                    <button type="submit" class="btn btn-primary pull-right">Buscar</button>	                    
+	                    <div class="clearfix"></div>                    </div>  
+                    <div class="row">
+	                    <div class="col-md-8">
+	                    
+	                    </div>
+                    </div>   
                   </form>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">RESULTADOS</h4>
+                </div>
+                <div class="card-body">
+                  <form th:action="@{/categorias/save}" method="post">
+                    <div class="row">
+	                      <div class="col-md-8">
+<!-- 						    <label th:each="perfil : ${profiles}">
+						      <input type="checkbox"/>
+						      <span th:value="${perfil.idProfile}"></span>
+						      <span th:text="${perfil.typeProfile}"></span>
+						    </label> -->
+					    
+					      
+							<ul class="list-group">
+							  <li class="list-group-item"><input type="checkbox"/> Cras justo odio</li>
+							  <li class="list-group-item"><input type="checkbox"/> Cras justo odio</li>
+							  <li class="list-group-item"><input type="checkbox"/> Cras justo odio</li>
+							  <li class="list-group-item"><input type="checkbox"/> Cras justo odio</li>
+							  <li class="list-group-item"><input type="checkbox"/> Cras justo odio</li>
+							</ul>
+
+	                      </div>
+                    </div>  
+                    <div class="row">
+	                    <div class="col-md-8">
+	                    <button type="submit" class="btn btn-primary pull-right">Guardar</button>	                    
+	                    <div class="clearfix"></div>	                    
+	                    </div>
+                    </div>   
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>        
       </div>
       <footer class="footer">
         <div class="container-fluid">

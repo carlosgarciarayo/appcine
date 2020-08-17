@@ -29,44 +29,44 @@ public class filmController {
 	
 	@Autowired
 	private FilmService filmService;
-	
-	
-    @Value("${api.key}")
-    private String apiKey;
-    
-    @Value("${api.language}")
-    private String language;
-
-    @Autowired
-    private RestTemplate restTemplate;
-
-    @GetMapping(path = "/{movieId}")
-    public String getMovieInfo(@PathVariable("movieId") String movieId,Model model) {
-        
-    	MovieSummary movieSummary = restTemplate.getForObject("https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" +  apiKey +  "&language=" +  language,  MovieSummary.class);
-        
-    	LOGGER.info("movieSummary -->" + movieSummary);
-    	
-    	Movie movie = new Movie(movieId, movieSummary.getTitle(), movieSummary.getOverview(),movieSummary.getPoster_path());
-    	
-    	model.addAttribute("mov",movie);
-    	
-    	LOGGER.info("Movie -->" +  movie);
-    	
-    	return "film/filmSheet";
-    	
-    	
-
-    }
-	
-	
-	
-	@GetMapping(path = "/ficha-pelicula")
-	public String categoryForm() {
-
-		return "film/filmSheet";
-
-	}
+//	
+//	
+//    @Value("${api.key}")
+//    private String apiKey;
+//    
+//    @Value("${api.language}")
+//    private String language;
+//
+//    @Autowired
+//    private RestTemplate restTemplate;
+//
+//    @GetMapping(path = "/{movieId}")
+//    public String getMovieInfo(@PathVariable("movieId") String movieId,Model model) {
+//        
+//    	MovieSummary movieSummary = restTemplate.getForObject("https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" +  apiKey +  "&language=" +  language,  MovieSummary.class);
+//        
+//    	LOGGER.info("movieSummary -->" + movieSummary);
+//    	
+//    	Movie movie = new Movie(movieId, movieSummary.getTitle(), movieSummary.getOverview(),movieSummary.getPoster_path());
+//    	
+//    	model.addAttribute("mov",movie);
+//    	
+//    	LOGGER.info("Movie -->" +  movie);
+//    	
+//    	return "film/filmSheet";
+//    	
+//    	
+//
+//    }
+//	
+//	
+//	
+//	@GetMapping(path = "/ficha-pelicula")
+//	public String categoryForm() {
+//
+//		return "film/filmSheet";
+//
+//	}
 
 	@RequestMapping("/create")
 	public String create(@RequestParam String title, @RequestParam String description, @RequestParam int outstanding, @RequestParam int status) {
