@@ -21,7 +21,7 @@ import com.cgr.appcine.model.Category;
 import com.cgr.appcine.service.CategoryService;
 
 @Controller
-@RequestMapping(path = "/categorias")
+@RequestMapping(path = "/admin/categorias")
 public class CategoryController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);

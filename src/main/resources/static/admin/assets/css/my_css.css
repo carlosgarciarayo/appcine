@@ -1,0 +1,5 @@
+@charset "UTF-8";
+
+.dark-edition .card.card-rotate.bg-primary .back {
+  background-image: linear-gradient(60deg, #029eb1, #25b1c3) !important;
+}

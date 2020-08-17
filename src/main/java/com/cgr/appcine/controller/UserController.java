@@ -67,6 +67,19 @@ public class UserController {
 
 	
 	
+	@RequestMapping(path = "/dashboard")
+	public String dashboard() {
+		
+		return "admin/dashboard.html";
+	}
+	
+	@RequestMapping(path = "/movie-form")
+	public String movieForm() {
+		
+		return "admin/movieForm.html";
+	}
+	
+	
 	@GetMapping(path = "/save-movie/{movieId}")
 	public String getMovieInfo(@PathVariable("movieId") String movieId, Model model) {
 
