@@ -3,7 +3,6 @@ package com.cgr.appcine.controller;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.cgr.appcine.model.Movie;
 import com.cgr.appcine.model.MovieSummary;
 import com.cgr.appcine.model.Profiles;
@@ -89,36 +87,41 @@ public class UserController {
 		LOGGER.info("movieSummary -->" + movieSummary);
 
 		Movie movie = movieService.create(movieId, movieSummary.getTitle(), movieSummary.getOverview(),	
-				movieSummary.getPoster_path(), movieSummary.getStatus(), movieSummary.getGenres());
+											movieSummary.getPoster_path(), movieSummary.getStatus(), 
+													movieSummary.getGenres(), movieSummary.getProduction_companies(), movieSummary.getImdb_id(), movieSummary.getProduction_countries());
 
 		model.addAttribute("mov", movie);
 
 		return "film/filmSheet";
 
 	}
-
 	
+
+/*	
 	
 	@GetMapping(path = "/search-movie/{titleMovie}")
-	public Movie getSearchMovie(@PathVariable("titleMovie") String titleMovie) {
-//https://api.themoviedb.org/3/search/movie?api_key=619f9eadef12602c3404f85bf64cab34&language=en-US&query=25466&page=1&include_adult=false
-		MovieSummary movieSummary = restTemplate.getForObject("https://api.themoviedb.org/3/search/movie" + "?api_key=" 
-									+ apiKey + "&language=" + language + "&query=" + titleMovie + "&page=1&include_adult=false",MovieSummary.class);
+	public SearchMovieSumary getSearchMovie(@PathVariable("titleMovie") String titleMovie) {
+//https://api.themoviedb.org/3/search/movie?api_key=619f9eadef12602c3404f85bf64cab34&query=jack
+		SearchMovieSumary searchMovieSumary = restTemplate.getForObject("https://api.themoviedb.org/3/search/movie" + "?api_key=" 
+									+ apiKey + "&query=" + titleMovie, SearchMovieSumary.class);
 
-		LOGGER.info("movieSummary -->" + movieSummary);
+		LOGGER.info("movieSummary -->" + searchMovieSumary);
 		
-		List<Movie> resultadosBusqueda = new ArrayList<Movie>();
-			
 		
+		
+		
+//		List<Movie> resultadosBusqueda = new ArrayList<Movie>();
+//			
+//		
+//
+//		Movie movie = movieService.search(titleMovie);
+//
+//		resultadosBusqueda.add(movie);
+//		
+//		LOGGER.info("MOVIE -->" + movie);
 
-		Movie movie = movieService.search(titleMovie);
-
-		resultadosBusqueda.add(movie);
 		
-		LOGGER.info("MOVIE -->" + movie);
-
-		
-		return movie;
+		return searchMovieSumary;
 
 	}
 	
@@ -126,7 +129,7 @@ public class UserController {
 	
 	
 	
-	
+	*/
 	
 	
 	

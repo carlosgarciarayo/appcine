@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cgr.appcine.model.Genres;
 import com.cgr.appcine.model.Movie;
+import com.cgr.appcine.dto.movies.Companies;
+import com.cgr.appcine.dto.movies.Genres;
+import com.cgr.appcine.dto.movies.ProductionCountries;
 import com.cgr.appcine.repository.MovieRepository;
 
 @Service
@@ -17,14 +19,13 @@ public class MovieService {
 	@Autowired
 	private MovieRepository movieRepository;
 
+
 	//Create operation
-	public Movie search(String name) {
-		return movieRepository.save(new Movie(name));
-	}
-	
-	//Create operation
-	public Movie create(String movieId, String name, String description, String poster,String status, List<Genres> genres) {
-		return movieRepository.save(new Movie(movieId, name, description,poster,status,genres));
+	public Movie create(String movieId, String name, String description, String poster,String status,
+							List<Genres> genres,List<Companies> companies, String imdbId,List<ProductionCountries> productionCountries) {
+		
+		return movieRepository.save(new Movie(movieId, name, description,poster,status,genres,companies,imdbId,productionCountries));
+
 	}
 	//Retrieve operation
 	public List<Movie> getAll(){
@@ -48,4 +49,6 @@ public class MovieService {
 		Movie movie = movieRepository.findByName(name);
 		movieRepository.delete(movie);
 	}
+
+
 }

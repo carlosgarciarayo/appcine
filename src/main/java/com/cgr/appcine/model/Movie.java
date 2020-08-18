@@ -2,41 +2,41 @@ package com.cgr.appcine.model;
 
 import java.util.Arrays;
 import java.util.List;
-
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.cgr.appcine.dto.movies.Companies;
+import com.cgr.appcine.dto.movies.Genres;
+import com.cgr.appcine.dto.movies.ProductionCountries;
 
 @Document(collection = "filmSheet")
 public class Movie {
 
-	@Id
-	private String id;
 	private String movieId;
 	private String name;
 	private String description;
 	private String poster;
 	private String status;
 	private List<Genres> genres;
+	private List<Companies> companies;
+	private String imdbId;
+	private List<ProductionCountries> productionCountries;
 
-	public Movie(String name) {
-		this.name = name;
-	}
 
-	public Movie(String movieId, String name, String description, String poster, String status, List<Genres> genres) {
+
+
+
+	public Movie(String movieId, String name, String description, String poster, String status, List<Genres> genres,
+			List<Companies> companies, String imdbId, List<ProductionCountries> productionCountries) {
+		super();
 		this.movieId = movieId;
 		this.name = name;
 		this.description = description;
 		this.poster = poster;
 		this.status = status;
 		this.genres = genres;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
+		this.companies = companies;
+		this.imdbId = imdbId;
+		this.productionCountries = productionCountries;
 	}
 
 	public String getMovieId() {
@@ -87,10 +87,42 @@ public class Movie {
 		this.genres = genres;
 	}
 
+	public List<Companies> getCompanies() {
+		return companies;
+	}
+
+	public void setCompanies(List<Companies> companies) {
+		this.companies = companies;
+	}
+
+	public String getImdbId() {
+		return imdbId;
+	}
+
+	public void setImdbId(String imdbId) {
+		this.imdbId = imdbId;
+	}
+
+	public List<ProductionCountries> getproductionCountries() {
+		return productionCountries;
+	}
+
+	public void setproductionCountries(List<ProductionCountries> productionCountries) {
+		this.productionCountries = productionCountries;
+	}
+
 	@Override
 	public String toString() {
-		return "Movie [id=" + id + ", movieId=" + movieId + ", name=" + name + ", description=" + description
-				+ ", poster=" + poster + ", status=" + status + ", genres=" + genres + "]";
+		return "Movie [movieId=" + movieId + ", name=" + name + ", description=" + description + ", poster=" + poster
+				+ ", status=" + status + ", genres=" + genres + ", companies=" + companies + ", imdbId=" + imdbId
+				+ ", production_countries=" + productionCountries + "]";
 	}
+
+	
+	
+
+	
+	
+
 
 }

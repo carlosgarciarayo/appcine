@@ -2,6 +2,11 @@ package com.cgr.appcine.model;
 
 import java.util.List;
 
+import com.cgr.appcine.dto.movies.Companies;
+import com.cgr.appcine.dto.movies.Genres;
+import com.cgr.appcine.dto.movies.ProductionCountries;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class MovieSummary {
 
 	private String id;
@@ -10,6 +15,9 @@ public class MovieSummary {
 	private String poster_path;
 	private String status;
 	private List<Genres> genres;
+	private List<Companies> production_companies;
+	private String imdb_id;
+	private List<ProductionCountries> production_countries;
 
 	public String getId() {
 		return id;
@@ -59,10 +67,49 @@ public class MovieSummary {
 		this.genres = genres;
 	}
 
+
+	public List<Companies> getProduction_companies() {
+		return production_companies;
+	}
+
+	public void setProduction_companies(List<Companies> production_companies) {
+		this.production_companies = production_companies;
+	}
+
+	public String getImdb_id() {
+		return imdb_id;
+	}
+
+	public void setImdb_id(String imdb_id) {
+		this.imdb_id = imdb_id;
+	}
+
+	public List<ProductionCountries> getProduction_countries() {
+		return production_countries;
+	}
+
+	public void setProduction_countries(List<ProductionCountries> production_countries) {
+		this.production_countries = production_countries;
+	}
+
 	@Override
 	public String toString() {
 		return "MovieSummary [id=" + id + ", title=" + title + ", overview=" + overview + ", poster_path=" + poster_path
-				+ ", status=" + status + ", genres=" + genres + "]";
+				+ ", status=" + status + ", genres=" + genres + ", production_companies=" + production_companies
+				+ ", imdb_id=" + imdb_id + ", production_countries=" + production_countries + "]";
 	}
+	
+	
+
+
+
+
+
+
+
+
+
+
+
 
 }
