@@ -1,4 +1,4 @@
-package com.cgr.appcine.model.films;
+package com.cgr.appcine.dto.movies;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

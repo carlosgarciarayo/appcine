@@ -1,10 +1,7 @@
-package com.cgr.appcine.model;
+package com.cgr.appcine.dto.movies;
 
 import java.util.List;
 
-import com.cgr.appcine.dto.movies.Companies;
-import com.cgr.appcine.dto.movies.Genres;
-import com.cgr.appcine.dto.movies.ProductionCountry;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class MovieSummary {

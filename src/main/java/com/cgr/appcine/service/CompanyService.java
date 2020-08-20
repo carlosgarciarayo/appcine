@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import com.cgr.appcine.dto.movies.Companies;
 import com.cgr.appcine.dto.movies.Company;
 import com.cgr.appcine.dto.movies.Genres;
+import com.cgr.appcine.dto.movies.Movie;
 import com.cgr.appcine.dto.movies.ProductionCountry;
-import com.cgr.appcine.model.Movie;
 import com.cgr.appcine.repository.CompanyRepository;
 
 @Service

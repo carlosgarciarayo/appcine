@@ -1,12 +1,8 @@
-package com.cgr.appcine.model;
+package com.cgr.appcine.dto.movies;
 
 import java.util.Arrays;
 import java.util.List;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import com.cgr.appcine.dto.movies.Companies;
-import com.cgr.appcine.dto.movies.Genres;
-import com.cgr.appcine.dto.movies.ProductionCountry;
 
 @Document(collection = "filmSheet")
 public class Movie {

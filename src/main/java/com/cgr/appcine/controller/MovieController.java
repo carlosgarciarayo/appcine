@@ -14,47 +14,72 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.cgr.appcine.model.FilmsSheet;
-import com.cgr.appcine.model.Movie;
-import com.cgr.appcine.model.MovieSummary;
+
+import com.cgr.appcine.dto.movies.Company;
+import com.cgr.appcine.dto.movies.CompanySumary;
+import com.cgr.appcine.dto.movies.Movie;
+import com.cgr.appcine.dto.movies.MovieSummary;
+import com.cgr.appcine.service.CompanyService;
 import com.cgr.appcine.service.MovieService;
 
 @Controller
-@RequestMapping(path = "/ficha-films")
+@RequestMapping(path = "/admin/movie")
 public class MovieController {
 
-//	private static final Logger LOGGER = LoggerFactory.getLogger(MovieController.class);
-//
-//	@Autowired
-//	private MovieService movieService;
-//
-//	@Value("${api.key}")
-//	private String apiKey;
-//
-//	@Value("${api.language}")
-//	private String language;
-//
-//	@Autowired
-//	private RestTemplate restTemplate;
+	private static final Logger LOGGER = LoggerFactory.getLogger(MovieController.class);
 
-//	@GetMapping(path = "/{movieId}")
-//	public String getMovieInfo(@PathVariable("movieId") String movieId, Model model) {
-//
-//		MovieSummary movieSummary = restTemplate.getForObject(
-//				"https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" + apiKey + "&language=" + language,
-//				MovieSummary.class);
-//
-//		LOGGER.info("movieSummary -->" + movieSummary);
-//
-//		Movie movie = movieService.create(movieId, movieSummary.getTitle(), movieSummary.getOverview(),
-//				movieSummary.getPoster_path());
-//
-//		model.addAttribute("mov", movie);
-//
-//		return "film/filmSheet";
-//
-//	}
+	@Autowired
+	private MovieService movieService;
 
+	@Value("${api.key}")
+	private String apiKey;
+
+	@Value("${api.language}")
+	private String language;
+
+	@Autowired
+	private RestTemplate restTemplate;
+	
+	@Autowired
+	private CompanyService companyService;
+
+	@GetMapping(path = "/save-movie/{movieId}")
+	public String getMovieInfo(@PathVariable("movieId") String movieId, Model model) {
+
+		MovieSummary movieSummary = restTemplate.getForObject("https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" 
+									+ apiKey + "&language=" + language,	MovieSummary.class);
+
+		LOGGER.info("movieSummary -->" + movieSummary);
+
+		Movie movie = movieService.create(movieId, movieSummary.getTitle(), movieSummary.getOverview(),	
+											movieSummary.getPoster_path(), movieSummary.getStatus(), 
+												movieSummary.getGenres(), movieSummary.getProduction_companies(),
+													movieSummary.getImdb_id(), movieSummary.getProduction_countries());
+
+		model.addAttribute("mov", movie);
+
+		return "film/filmSheet";
+
+	}
+	
+
+	
+
+	
+	@GetMapping(path = "/save-company/{companyId}")
+	public Company getMovieSearch (@PathVariable("companyId") String companyId) {
+
+		CompanySumary companySumary = restTemplate.getForObject("https://api.themoviedb.org/3/company/" + companyId + "?api_key=" + apiKey, CompanySumary.class);
+		
+		LOGGER.info("companySumary -->" + companySumary);
+		
+		Company company = companyService.create(companyId, companySumary.getName(), companySumary.getOrigin_country());
+		
+		LOGGER.info("COMPANY ------>" + company);
+			
+		return company;
+
+	}
 //	
 //	@GetMapping(path = "/ficha-pelicula")
 //	public String categoryForm() {
