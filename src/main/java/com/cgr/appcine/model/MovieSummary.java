@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.cgr.appcine.dto.movies.Companies;
 import com.cgr.appcine.dto.movies.Genres;
-import com.cgr.appcine.dto.movies.ProductionCountries;
+import com.cgr.appcine.dto.movies.ProductionCountry;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class MovieSummary {
@@ -17,7 +17,7 @@ public class MovieSummary {
 	private List<Genres> genres;
 	private List<Companies> production_companies;
 	private String imdb_id;
-	private List<ProductionCountries> production_countries;
+	private List<ProductionCountry> production_countries;
 
 	public String getId() {
 		return id;
@@ -84,11 +84,11 @@ public class MovieSummary {
 		this.imdb_id = imdb_id;
 	}
 
-	public List<ProductionCountries> getProduction_countries() {
+	public List<ProductionCountry> getProduction_countries() {
 		return production_countries;
 	}
 
-	public void setProduction_countries(List<ProductionCountries> production_countries) {
+	public void setProduction_countries(List<ProductionCountry> production_countries) {
 		this.production_countries = production_countries;
 	}
 
@@ -98,7 +98,10 @@ public class MovieSummary {
 				+ ", status=" + status + ", genres=" + genres + ", production_companies=" + production_companies
 				+ ", imdb_id=" + imdb_id + ", production_countries=" + production_countries + "]";
 	}
-	
+
+
+
+
 	
 
 

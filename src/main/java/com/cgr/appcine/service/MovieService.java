@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.cgr.appcine.model.Movie;
 import com.cgr.appcine.dto.movies.Companies;
 import com.cgr.appcine.dto.movies.Genres;
-import com.cgr.appcine.dto.movies.ProductionCountries;
+import com.cgr.appcine.dto.movies.ProductionCountry;
 import com.cgr.appcine.repository.MovieRepository;
 
 @Service
@@ -22,9 +22,9 @@ public class MovieService {
 
 	//Create operation
 	public Movie create(String movieId, String name, String description, String poster,String status,
-							List<Genres> genres,List<Companies> companies, String imdbId,List<ProductionCountries> productionCountries) {
+							List<Genres> genres,List<Companies> companies, String imdbId,List<ProductionCountry> productionCountry) {
 		
-		return movieRepository.save(new Movie(movieId, name, description,poster,status,genres,companies,imdbId,productionCountries));
+		return movieRepository.save(new Movie(movieId, name, description,poster,status,genres,companies,imdbId,productionCountry));
 
 	}
 	//Retrieve operation

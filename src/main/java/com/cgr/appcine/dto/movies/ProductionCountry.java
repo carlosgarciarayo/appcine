@@ -1,6 +1,6 @@
 package com.cgr.appcine.dto.movies;
 
-public class ProductionCountries {
+public class ProductionCountry {
 
 	private String iso_3166_1;
 	private String name;

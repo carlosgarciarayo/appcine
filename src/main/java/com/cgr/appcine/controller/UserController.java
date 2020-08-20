@@ -22,11 +22,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.cgr.appcine.dto.movies.Company;
+import com.cgr.appcine.dto.movies.CompanySumary;
 import com.cgr.appcine.model.Movie;
 import com.cgr.appcine.model.MovieSummary;
 import com.cgr.appcine.model.Profiles;
 import com.cgr.appcine.model.User;
 import com.cgr.appcine.service.CategoryService;
+import com.cgr.appcine.service.CompanyService;
 import com.cgr.appcine.service.FilmService;
 import com.cgr.appcine.service.MovieService;
 import com.cgr.appcine.service.ProfilesService;
@@ -53,6 +57,9 @@ public class UserController {
 
 	@Autowired
 	private MovieService movieService;
+	
+	@Autowired
+	private CompanyService companyService;
 
 	@Autowired
 	private RestTemplate restTemplate;
@@ -88,7 +95,8 @@ public class UserController {
 
 		Movie movie = movieService.create(movieId, movieSummary.getTitle(), movieSummary.getOverview(),	
 											movieSummary.getPoster_path(), movieSummary.getStatus(), 
-													movieSummary.getGenres(), movieSummary.getProduction_companies(), movieSummary.getImdb_id(), movieSummary.getProduction_countries());
+												movieSummary.getGenres(), movieSummary.getProduction_companies(),
+													movieSummary.getImdb_id(), movieSummary.getProduction_countries());
 
 		model.addAttribute("mov", movie);
 
@@ -97,52 +105,26 @@ public class UserController {
 	}
 	
 
-/*	
 	
-	@GetMapping(path = "/search-movie/{titleMovie}")
-	public SearchMovieSumary getSearchMovie(@PathVariable("titleMovie") String titleMovie) {
-//https://api.themoviedb.org/3/search/movie?api_key=619f9eadef12602c3404f85bf64cab34&query=jack
-		SearchMovieSumary searchMovieSumary = restTemplate.getForObject("https://api.themoviedb.org/3/search/movie" + "?api_key=" 
-									+ apiKey + "&query=" + titleMovie, SearchMovieSumary.class);
 
-		LOGGER.info("movieSummary -->" + searchMovieSumary);
-		
-		
-		
-		
-//		List<Movie> resultadosBusqueda = new ArrayList<Movie>();
-//			
-//		
-//
-//		Movie movie = movieService.search(titleMovie);
-//
-//		resultadosBusqueda.add(movie);
-//		
-//		LOGGER.info("MOVIE -->" + movie);
+	
+	@GetMapping(path = "/save-company/{companyId}")
+	public Company getMovieSearch (@PathVariable("companyId") String companyId) {
 
+		CompanySumary companySumary = restTemplate.getForObject("https://api.themoviedb.org/3/company/" + companyId + "?api_key=" + apiKey, CompanySumary.class);
 		
-		return searchMovieSumary;
+		LOGGER.info("companySumary -->" + companySumary);
+		
+		Company company = companyService.create(companyId, companySumary.getName(), companySumary.getOrigin_country());
+		
+		LOGGER.info("COMPANY ------>" + company);
+			
+		return company;
 
 	}
 	
 	
-	
-	
-	
-	*/
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	@GetMapping(path = "/formulario-registro")
 	public String formRegistre(User user, Model model) {

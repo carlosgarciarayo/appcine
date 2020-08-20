@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.cgr.appcine.dto.movies.Companies;
 import com.cgr.appcine.dto.movies.Genres;
-import com.cgr.appcine.dto.movies.ProductionCountries;
+import com.cgr.appcine.dto.movies.ProductionCountry;
 
 @Document(collection = "filmSheet")
 public class Movie {
@@ -19,14 +19,14 @@ public class Movie {
 	private List<Genres> genres;
 	private List<Companies> companies;
 	private String imdbId;
-	private List<ProductionCountries> productionCountries;
-
+	private List<ProductionCountry> productionCountry;
+	
 
 
 
 
 	public Movie(String movieId, String name, String description, String poster, String status, List<Genres> genres,
-			List<Companies> companies, String imdbId, List<ProductionCountries> productionCountries) {
+			List<Companies> companies, String imdbId, List<ProductionCountry> productionCountry) {
 		super();
 		this.movieId = movieId;
 		this.name = name;
@@ -36,7 +36,7 @@ public class Movie {
 		this.genres = genres;
 		this.companies = companies;
 		this.imdbId = imdbId;
-		this.productionCountries = productionCountries;
+		this.productionCountry = productionCountry;
 	}
 
 	public String getMovieId() {
@@ -103,20 +103,25 @@ public class Movie {
 		this.imdbId = imdbId;
 	}
 
-	public List<ProductionCountries> getproductionCountries() {
-		return productionCountries;
+	public List<ProductionCountry> getProductionCountry() {
+		return productionCountry;
 	}
 
-	public void setproductionCountries(List<ProductionCountries> productionCountries) {
-		this.productionCountries = productionCountries;
+	public void setProductionCountry(List<ProductionCountry> productionCountry) {
+		this.productionCountry = productionCountry;
 	}
 
 	@Override
 	public String toString() {
 		return "Movie [movieId=" + movieId + ", name=" + name + ", description=" + description + ", poster=" + poster
 				+ ", status=" + status + ", genres=" + genres + ", companies=" + companies + ", imdbId=" + imdbId
-				+ ", production_countries=" + productionCountries + "]";
+				+ ", productionCountry=" + productionCountry + "]";
 	}
+
+
+
+
+
 
 	
 	
