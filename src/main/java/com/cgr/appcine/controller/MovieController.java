@@ -1,7 +1,7 @@
 package com.cgr.appcine.controller;
 
-import java.util.List;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -9,16 +9,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.cgr.appcine.dto.movies.Company;
 import com.cgr.appcine.dto.movies.CompanySumary;
 import com.cgr.appcine.dto.movies.Movie;
 import com.cgr.appcine.dto.movies.MovieSummary;
+import com.cgr.appcine.dto.movies.SearchCompanySumary;
 import com.cgr.appcine.service.CompanyService;
 import com.cgr.appcine.service.MovieService;
 
@@ -67,7 +64,7 @@ public class MovieController {
 
 	
 	@GetMapping(path = "/save-company/{companyId}")
-	public Company getMovieSearch (@PathVariable("companyId") String companyId) {
+	public Company getCompanyInfo (@PathVariable("companyId") String companyId) {
 
 		CompanySumary companySumary = restTemplate.getForObject("https://api.themoviedb.org/3/company/" + companyId + "?api_key=" + apiKey, CompanySumary.class);
 		
@@ -80,6 +77,27 @@ public class MovieController {
 		return company;
 
 	}
+	
+	
+	@GetMapping(path = "/search-company/{name}")
+	public String searchCompany (@PathVariable("name") String name) {
+
+		//https://api.themoviedb.org/3/search/company?api_key=619f9eadef12602c3404f85bf64cab34&query=Universal&page=1
+				
+		SearchCompanySumary searchCompanySumary = restTemplate.getForObject("https://api.themoviedb.org/3/search/company?api_key=" + apiKey + "&query=" + name, SearchCompanySumary.class);
+
+		
+		LOGGER.info("searchSumaryCompany -->" + searchCompanySumary);
+
+		
+		return "";
+
+	}
+	
+	
+	
+	
+	
 //	
 //	@GetMapping(path = "/ficha-pelicula")
 //	public String categoryForm() {
