@@ -1,32 +1,48 @@
 package com.cgr.appcine.dto.movies;
 
+import java.io.Serializable;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "company")
-public class Company {
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
+@Document(collection = "company")
+public class Company implements Serializable {
+
+
+	
+	private static final long serialVersionUID = 2537362631674477586L;
+	
 	private String id;
 	private String idCompany;
 	private String name;
-	private String origin_country;
-	private String logo_path;
+	
+	@JsonProperty("origin_country")
+	private String originCountry;
+	
+	@JsonProperty("logo_path")
+	private String logoPath;
 
 	public Company() {
 	}
 
-	public Company(String id, String idCompany, String name, String origin_country, String logo_path) {
 
+	public Company(String id, String idCompany, String name, String originCountry, String logoPath) {
+		super();
 		this.id = id;
 		this.idCompany = idCompany;
 		this.name = name;
-		this.origin_country = origin_country;
-		this.logo_path = logo_path;
+		this.originCountry = originCountry;
+		this.logoPath = logoPath;
 	}
 
-	public Company(String idCompany, String name, String origin_country) {
+
+	public Company(String idCompany, String name, String originCountry) {
 		this.idCompany = idCompany;
 		this.name = name;
-		this.origin_country = origin_country;
+		this.originCountry = originCountry;
 	}
 
 	public String getId() {
@@ -53,27 +69,31 @@ public class Company {
 		this.name = name;
 	}
 
-	public String getOrigin_country() {
-		return origin_country;
+	public String getOriginCountry() {
+		return originCountry;
 	}
 
-	public void setOrigin_country(String origin_country) {
-		this.origin_country = origin_country;
+	public void setOriginCountry(String originCountry) {
+		this.originCountry = originCountry;
 	}
 
-	public String getLogo_path() {
-		return logo_path;
+
+	public String getLogoPath() {
+		return logoPath;
 	}
 
-	public void setLogo_path(String logo_path) {
-		this.logo_path = logo_path;
+
+	public void setLogoPath(String logoPath) {
+		this.logoPath = logoPath;
 	}
+
 
 	@Override
 	public String toString() {
-		return "Company [id=" + id + ", idCompany=" + idCompany + ", name=" + name + ", origin_country="
-				+ origin_country + ", logo_path=" + logo_path + "]";
+		return "Company [id=" + id + ", idCompany=" + idCompany + ", name=" + name + ", originCountry="
+				+ originCountry + ", logoPath=" + logoPath + "]";
 	}
+
 
 
 

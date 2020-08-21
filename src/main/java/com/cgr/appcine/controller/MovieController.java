@@ -49,9 +49,9 @@ public class MovieController {
 		LOGGER.info("movieSummary -->" + movieSummary);
 
 		Movie movie = movieService.create(movieId, movieSummary.getTitle(), movieSummary.getOverview(),	
-											movieSummary.getPoster_path(), movieSummary.getStatus(), 
-												movieSummary.getGenres(), movieSummary.getProduction_companies(),
-													movieSummary.getImdb_id(), movieSummary.getProduction_countries());
+											movieSummary.getPosterPath(), movieSummary.getStatus(), 
+												movieSummary.getGenres(), movieSummary.getProductionCompany(),
+													movieSummary.getImdbId(), movieSummary.getProductionCountry());
 
 		model.addAttribute("mov", movie);
 

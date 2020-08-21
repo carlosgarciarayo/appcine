@@ -2,10 +2,12 @@ package com.cgr.appcine.dto.movies;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class SearchCompanySumary {
+public class SearchCompanySumary  {
 
+	/*
+	 * DTO que recoge el json de la peticion
+	 */
 	private String id;
 	private List<Company> results;
 	private String total_pages;

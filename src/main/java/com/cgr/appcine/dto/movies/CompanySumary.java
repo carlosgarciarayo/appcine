@@ -1,14 +1,26 @@
 package com.cgr.appcine.dto.movies;
 
-public class CompanySumary {
+import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonPropertyOrder (alphabetic = true) 
+public class CompanySumary implements Serializable{
+
+	private static final long serialVersionUID = 3346611926581625371L;
+	
+	
 	private String id;
 	private String name;
 	private String origin_country;
 	private String description;
 	private String headquarters;
-	private String logo_path;
+	private String logoPath;
 	private String homepage;
+	
+	
 	public String getId() {
 		return id;
 	}
@@ -39,11 +51,12 @@ public class CompanySumary {
 	public void setHeadquarters(String headquarters) {
 		this.headquarters = headquarters;
 	}
-	public String getLogo_path() {
-		return logo_path;
+	
+	public String getLogoPath() {
+		return logoPath;
 	}
-	public void setLogo_path(String logo_path) {
-		this.logo_path = logo_path;
+	public void setLogoPath(String logoPath) {
+		this.logoPath = logoPath;
 	}
 	public String getHomepage() {
 		return homepage;
@@ -54,9 +67,10 @@ public class CompanySumary {
 	@Override
 	public String toString() {
 		return "CompanySumary [id=" + id + ", name=" + name + ", origin_country=" + origin_country + ", description="
-				+ description + ", headquarters=" + headquarters + ", logo_path=" + logo_path + ", homepage=" + homepage
+				+ description + ", headquarters=" + headquarters + ", logoPath=" + logoPath + ", homepage=" + homepage
 				+ "]";
 	}
+
 
 	
 

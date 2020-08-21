@@ -1,20 +1,37 @@
 package com.cgr.appcine.dto.movies;
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class MovieSummary {
+public class MovieSummary implements Serializable {
+
+	/*
+	 * DTO que recoge el json de la peticion atraeves de resTemplate
+	 */
+	private static final long serialVersionUID = 2471291748360018188L;
 
 	private String id;
+	
 	private String title;
+	
 	private String overview;
-	private String poster_path;
+
+	@JsonProperty("poster_path")
+	private String posterPath;
+
 	private String status;
 	private List<Genres> genres;
-	private List<Company> production_companies;
-	private String imdb_id;
-	private List<ProductionCountry> production_countries;
+
+	@JsonProperty("production_companies")
+	private List<Company> productionCompany;
+
+	@JsonProperty("imdb_id")
+	private String imdbId;
+
+	@JsonProperty("production_countries")
+	private List<ProductionCountry> productionCountry;
 
 	public String getId() {
 		return id;
@@ -40,12 +57,12 @@ public class MovieSummary {
 		this.overview = overview;
 	}
 
-	public String getPoster_path() {
-		return poster_path;
+	public String getPosterPath() {
+		return posterPath;
 	}
 
-	public void setPoster_path(String poster_path) {
-		this.poster_path = poster_path;
+	public void setPosterPath(String posterPath) {
+		this.posterPath = posterPath;
 	}
 
 	public String getStatus() {
@@ -64,35 +81,35 @@ public class MovieSummary {
 		this.genres = genres;
 	}
 
-	public List<Company> getProduction_companies() {
-		return production_companies;
+	public List<Company> getProductionCompany() {
+		return productionCompany;
 	}
 
-	public void setProduction_companies(List<Company> production_companies) {
-		this.production_companies = production_companies;
+	public void setProductionCompany(List<Company> productionCompany) {
+		this.productionCompany = productionCompany;
 	}
 
-	public String getImdb_id() {
-		return imdb_id;
+	public String getImdbId() {
+		return imdbId;
 	}
 
-	public void setImdb_id(String imdb_id) {
-		this.imdb_id = imdb_id;
+	public void setImdbId(String imdbId) {
+		this.imdbId = imdbId;
 	}
 
-	public List<ProductionCountry> getProduction_countries() {
-		return production_countries;
+	public List<ProductionCountry> getProductionCountry() {
+		return productionCountry;
 	}
 
-	public void setProduction_countries(List<ProductionCountry> production_countries) {
-		this.production_countries = production_countries;
+	public void setProductionCountry(List<ProductionCountry> productionCountry) {
+		this.productionCountry = productionCountry;
 	}
 
 	@Override
 	public String toString() {
-		return "MovieSummary [id=" + id + ", title=" + title + ", overview=" + overview + ", poster_path=" + poster_path
-				+ ", status=" + status + ", genres=" + genres + ", production_companies=" + production_companies
-				+ ", imdb_id=" + imdb_id + ", production_countries=" + production_countries + "]";
+		return "MovieSummary [id=" + id + ", title=" + title + ", overview=" + overview + ", posterPath=" + posterPath
+				+ ", status=" + status + ", genres=" + genres + ", productionCompany=" + productionCompany + ", imdbId="
+				+ imdbId + ", productionCountry=" + productionCountry + "]";
 	}
 
 }

@@ -1,11 +1,16 @@
 package com.cgr.appcine.dto.movies;
 
-import java.util.Arrays;
+import java.io.Serializable;
 import java.util.List;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "filmSheet")
-public class Movie {
+public class Movie implements Serializable {
+	/*
+	 * DTO para la persitencia en la base de datos
+	 */
+	private static final long serialVersionUID = 489038112756874520L;
 
 	private String movieId;
 	private String name;
