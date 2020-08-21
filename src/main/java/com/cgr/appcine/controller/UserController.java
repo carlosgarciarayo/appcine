@@ -68,12 +68,7 @@ public class UserController {
 		return "admin/dashboard.html";
 	}
 	
-	@RequestMapping(path = "/movie-form")
-	public String movieForm() {
-		
-		return "admin/movieForm.html";
-	}
-	
+
 	
 	@GetMapping(path = "/formulario-registro")
 	public String formRegistre(User user, Model model) {

@@ -36,69 +36,62 @@ public class MovieController {
 
 	@Autowired
 	private RestTemplate restTemplate;
-	
+
 	@Autowired
 	private CompanyService companyService;
 
 	@GetMapping(path = "/save-movie/{movieId}")
 	public String getMovieInfo(@PathVariable("movieId") String movieId, Model model) {
 
-		MovieSummary movieSummary = restTemplate.getForObject("https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" 
-									+ apiKey + "&language=" + language,	MovieSummary.class);
+		MovieSummary movieSummary = restTemplate.getForObject(
+				"https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" + apiKey + "&language=" + language,
+				MovieSummary.class);
 
 		LOGGER.info("movieSummary -->" + movieSummary);
 
-		Movie movie = movieService.create(movieId, movieSummary.getTitle(), movieSummary.getOverview(),	
-											movieSummary.getPosterPath(), movieSummary.getStatus(), 
-												movieSummary.getGenres(), movieSummary.getProductionCompany(),
-													movieSummary.getImdbId(), movieSummary.getProductionCountry());
+		Movie movie = movieService.create(movieId, movieSummary.getTitle(), movieSummary.getOverview(),
+				movieSummary.getPosterPath(), movieSummary.getStatus(), movieSummary.getGenres(),
+				movieSummary.getProductionCompany(), movieSummary.getImdbId(), movieSummary.getProductionCountry());
 
 		model.addAttribute("mov", movie);
 
 		return "film/filmSheet";
 
 	}
-	
 
-	
-
-	
 	@GetMapping(path = "/save-company/{companyId}")
-	public Company getCompanyInfo (@PathVariable("companyId") String companyId) {
+	public Company getCompanyInfo(@PathVariable("companyId") String companyId) {
 
 		CompanySumary companySumary = restTemplate.getForObject("https://api.themoviedb.org/3/company/" + companyId + "?api_key=" + apiKey, CompanySumary.class);
-		
+
 		LOGGER.info("companySumary -->" + companySumary);
-		
+
 		Company company = companyService.create(companyId, companySumary.getName(), companySumary.getOrigin_country());
-		
+
 		LOGGER.info("COMPANY ------>" + company);
-			
+
 		return company;
 
 	}
-	
-	
+
 	@GetMapping(path = "/search-company/{name}")
-	public String searchCompany (@PathVariable("name") String name) {
+	public String searchCompany(@PathVariable("name") String name) {
 
-		//https://api.themoviedb.org/3/search/company?api_key=619f9eadef12602c3404f85bf64cab34&query=Universal&page=1
-				
-		SearchCompanySumary searchCompanySumary = restTemplate.getForObject("https://api.themoviedb.org/3/search/company?api_key=" + apiKey + "&query=" + name, SearchCompanySumary.class);
+		SearchCompanySumary searchCompanySumary = restTemplate.getForObject("https://api.themoviedb.org/3/search/company?api_key=" + apiKey + "&query=" + name,
+				SearchCompanySumary.class);
 
-		
 		LOGGER.info("searchSumaryCompany -->" + searchCompanySumary);
 
-		
 		return "";
 
 	}
-	
-	
-	
-	
-	
-//	
+
+	@RequestMapping(path = "/form")
+	public String movieForm() {
+
+		return "film/movieForm.html";
+	}
+
 //	@GetMapping(path = "/ficha-pelicula")
 //	public String categoryForm() {
 //
