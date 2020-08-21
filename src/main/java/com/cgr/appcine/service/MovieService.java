@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cgr.appcine.dto.movies.Companies;
+import com.cgr.appcine.dto.movies.Company;
 import com.cgr.appcine.dto.movies.Genres;
 import com.cgr.appcine.dto.movies.Movie;
 import com.cgr.appcine.dto.movies.ProductionCountry;
@@ -22,9 +22,9 @@ public class MovieService {
 
 	//Create operation
 	public Movie create(String movieId, String name, String description, String poster,String status,
-							List<Genres> genres,List<Companies> companies, String imdbId,List<ProductionCountry> productionCountry) {
+							List<Genres> genres,List<Company> company, String imdbId,List<ProductionCountry> productionCountry) {
 		
-		return movieRepository.save(new Movie(movieId, name, description,poster,status,genres,companies,imdbId,productionCountry));
+		return movieRepository.save(new Movie(movieId, name, description,poster,status,genres,company,imdbId,productionCountry));
 
 	}
 	//Retrieve operation

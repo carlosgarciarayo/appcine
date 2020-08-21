@@ -13,16 +13,12 @@ public class Movie {
 	private String poster;
 	private String status;
 	private List<Genres> genres;
-	private List<Companies> companies;
+	private List<Company> company;
 	private String imdbId;
 	private List<ProductionCountry> productionCountry;
-	
-
-
-
 
 	public Movie(String movieId, String name, String description, String poster, String status, List<Genres> genres,
-			List<Companies> companies, String imdbId, List<ProductionCountry> productionCountry) {
+			List<Company> company, String imdbId, List<ProductionCountry> productionCountry) {
 		super();
 		this.movieId = movieId;
 		this.name = name;
@@ -30,7 +26,7 @@ public class Movie {
 		this.poster = poster;
 		this.status = status;
 		this.genres = genres;
-		this.companies = companies;
+		this.company = company;
 		this.imdbId = imdbId;
 		this.productionCountry = productionCountry;
 	}
@@ -83,12 +79,12 @@ public class Movie {
 		this.genres = genres;
 	}
 
-	public List<Companies> getCompanies() {
-		return companies;
+	public List<Company> getCompany() {
+		return company;
 	}
 
-	public void setCompanies(List<Companies> companies) {
-		this.companies = companies;
+	public void setCompany(List<Company> company) {
+		this.company = company;
 	}
 
 	public String getImdbId() {
@@ -110,20 +106,8 @@ public class Movie {
 	@Override
 	public String toString() {
 		return "Movie [movieId=" + movieId + ", name=" + name + ", description=" + description + ", poster=" + poster
-				+ ", status=" + status + ", genres=" + genres + ", companies=" + companies + ", imdbId=" + imdbId
+				+ ", status=" + status + ", genres=" + genres + ", company=" + company + ", imdbId=" + imdbId
 				+ ", productionCountry=" + productionCountry + "]";
 	}
-
-
-
-
-
-
-	
-	
-
-	
-	
-
 
 }

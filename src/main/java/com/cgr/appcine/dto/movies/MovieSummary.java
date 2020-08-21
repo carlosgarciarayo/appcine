@@ -12,7 +12,7 @@ public class MovieSummary {
 	private String poster_path;
 	private String status;
 	private List<Genres> genres;
-	private List<Companies> production_companies;
+	private List<Company> production_companies;
 	private String imdb_id;
 	private List<ProductionCountry> production_countries;
 
@@ -64,12 +64,11 @@ public class MovieSummary {
 		this.genres = genres;
 	}
 
-
-	public List<Companies> getProduction_companies() {
+	public List<Company> getProduction_companies() {
 		return production_companies;
 	}
 
-	public void setProduction_companies(List<Companies> production_companies) {
+	public void setProduction_companies(List<Company> production_companies) {
 		this.production_companies = production_companies;
 	}
 
@@ -95,21 +94,5 @@ public class MovieSummary {
 				+ ", status=" + status + ", genres=" + genres + ", production_companies=" + production_companies
 				+ ", imdb_id=" + imdb_id + ", production_countries=" + production_countries + "]";
 	}
-
-
-
-
-	
-
-
-
-
-
-
-
-
-
-
-
 
 }

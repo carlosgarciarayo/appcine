@@ -12,6 +12,9 @@ public class Company {
 	
 	
 	
+	
+	public Company() {}
+	
 	public Company(String idCompany, String name, String originCountry) {
 		this.idCompany = idCompany;
 		this.name = name;

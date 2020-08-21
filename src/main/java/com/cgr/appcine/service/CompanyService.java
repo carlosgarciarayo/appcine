@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cgr.appcine.dto.movies.Companies;
 import com.cgr.appcine.dto.movies.Company;
 import com.cgr.appcine.dto.movies.Genres;
 import com.cgr.appcine.dto.movies.Movie;
