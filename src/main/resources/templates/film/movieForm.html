@@ -28,6 +28,7 @@
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
+  
   <link href="../assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
   <link href="../assets/assets/css/my_css.css" rel="stylesheet" /> 
   <!-- CSS Just for demo purpose, don't include it in your project -->
@@ -52,22 +53,27 @@
                   <h4 class="card-title">REGISTRO DE PELÍCULAS</h4>
                 </div>
                 <div class="card-body">
-                  <form th:action="@{/categorias/save}" method="post">
+                
+                
+    <!--             
+                
+               
+                  <form th:action="@{/admin/movie/search-company/{name} (name=${searchCompany.id})}" method="post" th:object="${searchCompanySumary}" enctype="multipart/form-data">                                                           
                     <div class="row">
-	                      <div class="col-md-8">
-	                        <div class="form-group">
-	                          <label class="bmd-label-floating">Nombre de la película</label>
-	                          <input  type="text" name="name" class="form-control">
-	                        </div>
-	                      </div>
-	                    <button type="submit" class="btn btn-primary pull-right">Buscar</button>	                    
-	                    <div class="clearfix"></div>                    </div>  
-                    <div class="row">
-	                    <div class="col-md-8">
-	                    
-	                    </div>
-                    </div>   
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Compañia</label>
+                          <input type="text" class="form-control" th:field="*{name}" name="name">
+                        </div>
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary pull-right">Enviar</button>
                   </form>
+                
+                -->   
+ <!--  <a th:href="@{/admin/search-company/{id} (id=${searchCompany.total_results}) }" class="btn btn-link" role="button" title="Eliminar"><span style="font-size: 12px">| Eliminar Usuario |</span></a>                  
+       -->            
+  
                 </div>
               </div>
             </div>
@@ -79,26 +85,13 @@
               <div class="card">
                 <div class="card-header card-header-primary">
                   <h4 class="card-title">RESULTADOS</h4>
+                  
                 </div>
                 <div class="card-body">
                   <form th:action="@{/categorias/save}" method="post">
                     <div class="row">
 	                      <div class="col-md-8">
-<!-- 						    <label th:each="perfil : ${profiles}">
-						      <input type="checkbox"/>
-						      <span th:value="${perfil.idProfile}"></span>
-						      <span th:text="${perfil.typeProfile}"></span>
-						    </label> -->
-					    
-					      
-							<ul class="list-group">
-							  <li class="list-group-item"><input type="checkbox"/> Cras justo odio</li>
-							  <li class="list-group-item"><input type="checkbox"/> Cras justo odio</li>
-							  <li class="list-group-item"><input type="checkbox"/> Cras justo odio</li>
-							  <li class="list-group-item"><input type="checkbox"/> Cras justo odio</li>
-							  <li class="list-group-item"><input type="checkbox"/> Cras justo odio</li>
-							</ul>
-
+							<h5 th:text="${resultSearch.results}" class="card-category"></h5>
 	                      </div>
                     </div>  
                     <div class="row">

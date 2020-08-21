@@ -74,20 +74,34 @@ public class MovieController {
 
 	}
 
-	@GetMapping(path = "/search-company/{name}")
-	public String searchCompany(@PathVariable("name") String name) {
+	
+	public SearchCompanySumary searchCompany(String name) {
 
-		SearchCompanySumary searchCompanySumary = restTemplate.getForObject("https://api.themoviedb.org/3/search/company?api_key=" + apiKey + "&query=" + name,
-				SearchCompanySumary.class);
-
+		SearchCompanySumary searchCompanySumary = restTemplate.getForObject("https://api.themoviedb.org/3/search/company?api_key=" + apiKey + "&query=" + name,	SearchCompanySumary.class);	
 		LOGGER.info("searchSumaryCompany -->" + searchCompanySumary);
-
-		return "";
+		
+		return searchCompanySumary;
 
 	}
 
+	
+	@GetMapping(path = "/search-company/{name}")
+	public String movieForm(@PathVariable("name") String name, Model model) {
+		
+		SearchCompanySumary resultSearch = searchCompany(name);
+
+		model.addAttribute("resultSearch", resultSearch);
+		
+		LOGGER.info("RESULTADO DE LA BUSQUEDA -->" + resultSearch);
+
+		return "film/movieForm.html";
+	}
+	
+	
+	
 	@RequestMapping(path = "/form")
-	public String movieForm() {
+	public String movieFormView() {
+		
 
 		return "film/movieForm.html";
 	}
