@@ -52,27 +52,24 @@
                 <div class="card-header card-header-primary">
                   <h4 class="card-title">REGISTRO DE PELÍCULAS</h4>
                 </div>
-                <div class="card-body">
+                <div class="card-body">               
                 
-                
-    <!--             
-                
+         
+          <!--       
                
-                  <form th:action="@{/admin/movie/search-company/{name} (name=${searchCompany.id})}" method="post" th:object="${searchCompanySumary}" enctype="multipart/form-data">                                                           
+                  <form th:action="@{/admin/movie/search-company/{id} (name=${SearchCompanySumary.id})}" method="post" th:object="${searchCompanySumary}" enctype="multipart/form-data">                                                           
                     <div class="row">
                       <div class="col-md-3">
                         <div class="form-group">
                           <label class="bmd-label-floating">Compañia</label>
-                          <input type="text" class="form-control" th:field="*{name}" name="name">
+                          <input type="text" class="form-control" th:field="*{id}" name="name">
                         </div>
                       </div>
                     </div>
                     <button type="submit" class="btn btn-primary pull-right">Enviar</button>
                   </form>
                 
-                -->   
- <!--  <a th:href="@{/admin/search-company/{id} (id=${searchCompany.total_results}) }" class="btn btn-link" role="button" title="Eliminar"><span style="font-size: 12px">| Eliminar Usuario |</span></a>                  
-       -->            
+            --> 
   
                 </div>
               </div>
@@ -87,11 +84,54 @@
                   <h4 class="card-title">RESULTADOS</h4>
                   
                 </div>
-                <div class="card-body">
+                
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+         <div class="card-body">                           
+                
+			<table class="table">
+
+			  <tbody>
+			    <tr th:each="usu : ${resultSearch}">
+			      	<td>
+			      		<a href="https://www.w3schools.com/"><h5 th:text="${usu}" class="card-category"></h5></a>
+			     	</td>
+			    </tr>   
+			  </tbody>
+			</table>                
+		</div>
+    </div>
+    <div class="col-sm">
+    
+		<div class="card-body">    
+			<table class="table">
+
+			  <tbody>
+			  
+			    <tr th:each="usuP : ${resultSearchPoster}">
+			      	<td>
+			      		<img th:src= "@{https://image.tmdb.org/t/p/w600_and_h900_bestv2/{id} (id=${usuP})}" width="50" height="48">
+			     	</td>
+			    </tr>
+			  </tbody>
+			</table>    
+		</div>
+
+  </div>
+</div>                
+                
+                
+
+
+
+                
+  <!--                
+                
                   <form th:action="@{/categorias/save}" method="post">
                     <div class="row">
 	                      <div class="col-md-8">
-							<h5 th:text="${resultSearch.results}" class="card-category"></h5>
+							<h5 th:text="${resultSearch}" class="card-category"></h5>
 	                      </div>
                     </div>  
                     <div class="row">
@@ -101,6 +141,11 @@
 	                    </div>
                     </div>   
                   </form>
+-->                
+                
+                
+                
+                
                 </div>
               </div>
             </div>
