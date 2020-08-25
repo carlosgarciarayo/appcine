@@ -113,7 +113,11 @@
 							  
 							    <tr th:each="usuP : ${resultSearchPoster}">
 							      	<td>
-							      		<img th:src= "@{https://image.tmdb.org/t/p/w600_and_h900_bestv2/{id} (id=${usuP})}" width="50" height="48">
+						      			<img th:src= "@{https://image.tmdb.org/t/p/w600_and_h900_bestv2/{id} (id=${usuP})}" width="50" height="48">						      			
+							     	</td>
+							      	<td>
+						      			<img th:src= "@{{id} (id=${usuP})}" width="50" height="48">
+
 							     	</td>
 							    </tr>
 							  </tbody>
