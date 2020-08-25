@@ -50,7 +50,7 @@ public class MovieController {
 				"https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" + apiKey + "&language=" + language,
 				MovieSummary.class);
 
-		LOGGER.info("movieSummary -->" + movieSummary);
+		LOGGER.info("MOVIE SUMARY --->: {} ",  movieSummary);
 
 		Movie movie = movieService.create(movieId, movieSummary.getTitle(), movieSummary.getOverview(),
 				movieSummary.getPosterPath(), movieSummary.getStatus(), movieSummary.getGenres(),
@@ -65,106 +65,94 @@ public class MovieController {
 	@GetMapping(path = "/save-company/{companyId}")
 	public Company getCompanyInfo(@PathVariable("companyId") String companyId) {
 
-		CompanySumary companySumary = restTemplate.getForObject("https://api.themoviedb.org/3/company/" + companyId + "?api_key=" + apiKey, CompanySumary.class);
+		CompanySumary companySumary = restTemplate.getForObject(
+				"https://api.themoviedb.org/3/company/" + companyId + "?api_key=" + apiKey, CompanySumary.class);
 
-		LOGGER.info("companySumary -->" + companySumary);
+		LOGGER.info("COMPANY-SUMARY --->: {} ", companySumary);
 
 		Company company = companyService.create(companyId, companySumary.getName(), companySumary.getOrigin_country());
 
-		LOGGER.info("COMPANY ------>" + company);
+		LOGGER.info("COMPANY--->: {} ", company);
 
 		return company;
 
 	}
 
-	
-	
 	@GetMapping(path = "/search-company/{name}")
 	public String movieForm(@PathVariable("name") String name, Model model) {
-		
+
 		List<String> resultSearch = searchCompanyName(name);
 		List<String> resultSearchPoster = searchCompanyPoster(name);
 
 		model.addAttribute("resultSearch", resultSearch);
 		model.addAttribute("resultSearchPoster", resultSearchPoster);
-		
-		LOGGER.info("RESULTADO DE LA BUSQUEDA -->" + resultSearch);
+
+		LOGGER.info("RESULTADO DE LA BUSQUEDA -->: {} ", resultSearch);
 
 		return "film/movieForm.html";
 	}
-	
 
-	//Optenemos el logo de la compañia
+	// Optenemos el logo de la compañia
 	public List<String> searchCompanyPoster(String name) {
 
-		SearchCompanySumary searchCompanySumary = restTemplate.getForObject("https://api.themoviedb.org/3/search/company?api_key=" + apiKey + "&query=" + name,	SearchCompanySumary.class);	
-		LOGGER.info("searchSumaryCompany -->" + searchCompanySumary);
+		SearchCompanySumary searchCompanySumary = restTemplate.getForObject(
+				"https://api.themoviedb.org/3/search/company?api_key=" + apiKey + "&query=" + name,
+				SearchCompanySumary.class);
 		
+		LOGGER.info("searchSumaryCompany -->: {}",searchCompanySumary);
+
 		List<Company> listCom = searchCompanySumary.getResults();
 		List<String> logoPathCompnayList = new ArrayList<String>();
-		
+
 		String companyPoster = "";
-		
-		for (Company c: listCom) {
-			
-			if(c.getLogoPath() == null) {
-				
+
+		for (Company c : listCom) {
+
+			if (c.getLogoPath() == null) {
+
 				logoPathCompnayList.add("");
-				
-				LOGGER.info("companyPoste-->" + logoPathCompnayList);
 
-			}else {
-			
-			companyPoster = c.getLogoPath();			
-			logoPathCompnayList.add(companyPoster);
+			} else {
 
-			LOGGER.info("POSTER-->" + logoPathCompnayList);
+				companyPoster = c.getLogoPath();
+				logoPathCompnayList.add(companyPoster);
+
+				LOGGER.info("POSTER-->: {}",logoPathCompnayList);
 			}
 		}
-				
+
 		return logoPathCompnayList;
-		
 
 	}
-	
-	
-	//Optenemos el nombre de la compañia
+
+	// Optenemos el nombre de la compañia
 	public List<String> searchCompanyName(String name) {
 
-		SearchCompanySumary searchCompanySumary = restTemplate.getForObject("https://api.themoviedb.org/3/search/company?api_key=" + apiKey + "&query=" + name,	SearchCompanySumary.class);	
-		LOGGER.info("searchSumaryCompany -->" + searchCompanySumary);
+		SearchCompanySumary searchCompanySumary = restTemplate.getForObject(
+				"https://api.themoviedb.org/3/search/company?api_key=" + apiKey + "&query=" + name,
+				SearchCompanySumary.class);
 		
+		LOGGER.info("SEARCH_COMPANY_SUMARY -->: {} ",searchCompanySumary);
+
 		List<Company> listCom = searchCompanySumary.getResults();
 		List<String> nameCompnayList = new ArrayList<String>();
-		
+
 		String nameCompany = "";
-		
-		for (Company c: listCom) {
-			
+
+		for (Company c : listCom) {
+
 			nameCompany = c.getName();
-			
+
 			nameCompnayList.add(nameCompany);
-			
-			/*
-			 * if(nameCompany != null && nameCompany.equals(name)) {
-			 * 
-			 * LOGGER.info("nameCompany-->" + nameCompany);
-			 * 
-			 * return nameCompany; }
-			 */
 
 		}
-		
-		
+
 		return nameCompnayList;
 
-		
-
 	}
-	
+
 	@RequestMapping(path = "/form")
 	public String movieFormView() {
-		
 
 		return "film/movieForm.html";
 	}

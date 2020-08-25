@@ -1,7 +1,6 @@
 package com.cgr.appcine.controller;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,19 +18,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.cgr.appcine.dto.movies.Company;
-import com.cgr.appcine.dto.movies.CompanySumary;
-import com.cgr.appcine.dto.movies.Movie;
-import com.cgr.appcine.dto.movies.MovieSummary;
 import com.cgr.appcine.model.Profiles;
 import com.cgr.appcine.model.User;
 import com.cgr.appcine.service.CategoryService;
-import com.cgr.appcine.service.CompanyService;
-import com.cgr.appcine.service.MovieService;
 import com.cgr.appcine.service.ProfilesService;
 import com.cgr.appcine.service.UserService;
 import com.cgr.appcine.util.Utileria;
@@ -169,7 +161,7 @@ public class UserController {
 
 	}
 
-	List<User> listUser = new ArrayList();
+	List<User> listUser = new ArrayList<User>();
 
 	@GetMapping(path = "/lista-de-usuarios/order")
 	public String searchAllOrderByName(Model model) {
