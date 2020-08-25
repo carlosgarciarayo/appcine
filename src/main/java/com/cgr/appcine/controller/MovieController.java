@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
 import com.cgr.appcine.dto.movies.Company;
@@ -78,8 +79,8 @@ public class MovieController {
 
 	}
 
-	@GetMapping(path = "/search-company/{name}")
-	public String movieForm(@PathVariable("name") String name, Model model) {
+	@GetMapping(path = "/search-company/")
+	public String movieForm(@RequestParam(name = "name") String name, Model model) {
 
 		List<String> resultSearch = searchCompanyName(name);
 		List<String> resultSearchPoster = searchCompanyPoster(name);
@@ -89,7 +90,7 @@ public class MovieController {
 
 		LOGGER.info("RESULTADO DE LA BUSQUEDA -->: {} ", resultSearch);
 
-		return "film/movieForm.html";
+		return "film/movieFormSearch.html";
 	}
 
 	// Optenemos el logo de la compañia
