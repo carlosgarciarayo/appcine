@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Document(collection = "filmSheet")
 public class Movie implements Serializable {
 	/*
@@ -12,7 +14,9 @@ public class Movie implements Serializable {
 	 */
 	private static final long serialVersionUID = 489038112756874520L;
 
+	@JsonProperty("id")
 	private String movieId;
+	@JsonProperty("title")
 	private String name;
 	private String description;
 	private String poster;
@@ -21,6 +25,12 @@ public class Movie implements Serializable {
 	private List<Company> company;
 	private String imdbId;
 	private List<ProductionCountry> productionCountry;
+
+	public Movie() {
+		super();
+	}
+
+
 
 	public Movie(String movieId, String name, String description, String poster, String status, List<Genres> genres,
 			List<Company> company, String imdbId, List<ProductionCountry> productionCountry) {
@@ -36,6 +46,8 @@ public class Movie implements Serializable {
 		this.productionCountry = productionCountry;
 	}
 
+
+
 	public String getMovieId() {
 		return movieId;
 	}
@@ -44,13 +56,18 @@ public class Movie implements Serializable {
 		this.movieId = movieId;
 	}
 
+
 	public String getName() {
 		return name;
 	}
 
+
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
+
 
 	public String getDescription() {
 		return description;
@@ -108,11 +125,15 @@ public class Movie implements Serializable {
 		this.productionCountry = productionCountry;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "Movie [movieId=" + movieId + ", name=" + name + ", description=" + description + ", poster=" + poster
 				+ ", status=" + status + ", genres=" + genres + ", company=" + company + ", imdbId=" + imdbId
 				+ ", productionCountry=" + productionCountry + "]";
 	}
+
+
 
 }

@@ -66,7 +66,7 @@
                       <div class="col-md-12">
                         <div class="form-group">
                          <label class="bmd-label-floating">Buscar pelicula</label>
-                           <input type="text" class="form-control"  name="nameMovie"> 
+                           <input type="text" class="form-control"  name="name"> 
                         </div>
                       </div>
                     </div>
@@ -79,7 +79,67 @@
               </div>
             </div>
           </div>
-        </div>       
+        </div>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">RESULTADOS</h4>                  
+                </div>                
+				<div class="container">
+				  <div class="row">
+				    <div class="col-sm">
+				         <div class="card-body">                           
+				                
+							<table class="table">
+				
+							  <tbody>
+							    <tr th:each="usu : ${resultSearchMovie}">
+							      	<td >
+							      		<a th:src= "@{/admin/movie/save-movie/{id} (id=${usuId})}"><h5 th:text="${usu}" class="card-category"></h5></a>
+							     	</td>
+							    </tr> 
+							      
+							  </tbody>
+							</table>                
+						</div>
+				    </div>
+				    <div class="col-sm">
+				    
+						<div class="card-body">   
+						
+							<table class="table">
+				
+							  <tbody>
+							  
+							    <tr th:each="usuId : ${resultSearchId}">
+							      	<td>							      		
+							      		<a class="btn btn-success" th:href= "@{../save-movie/{id} (id=${usuId})}" role="link" >Link</a>
+							     	</td>
+
+							    </tr>
+							  </tbody>
+							</table>   						
+						</div>
+				
+				  </div>
+				    <div class="col-sm">
+				    
+						<div class="card-body">    
+ 
+						</div>
+				
+				  </div>				  
+				  
+				</div>                
+                    
+                
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>        
       </div>
       <footer class="footer">
         <div class="container-fluid">

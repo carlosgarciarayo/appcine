@@ -60,13 +60,13 @@
                  <!--   <form th:action="@{/admin/movie/search-company/{id} (name=${companySumary.name})}" method="post" th:object="${companySumary}" enctype="multipart/form-data">                                                           
            resultSearch        
                    --> 
-				<form th:action="@{/admin/movie/search-movie/}" method="get" enctype="multipart/form-data">
+				<form th:action="@{/admin/movie/search-company/}" method="get" enctype="multipart/form-data">
 				                                                                             
                    <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
-                         <label class="bmd-label-floating">Buscar pelicula</label>
-                           <input type="text" class="form-control"  name="nameMovie"> 
+                         <label class="bmd-label-floating">Buscar compañia</label>
+                           <input type="text" class="form-control"  name="name"> 
                         </div>
                       </div>
                     </div>

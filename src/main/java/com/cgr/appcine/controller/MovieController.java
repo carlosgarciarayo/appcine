@@ -31,8 +31,16 @@ public class MovieController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(MovieController.class);
 
+
+	@Autowired
+	private RestTemplate restTemplate;
+
+	@Autowired
+	private CompanyService companyService;
+
 	@Autowired
 	private MovieService movieService;
+
 
 	@Value("${api.key}")
 	private String apiKey;
@@ -40,12 +48,6 @@ public class MovieController {
 	@Value("${api.language}")
 	private String language;
 	
-
-	@Autowired
-	private RestTemplate restTemplate;
-
-	@Autowired
-	private CompanyService companyService;
 
 	@GetMapping(path = "/save-movie/{movieId}")
 	public String getMovieInfo(@PathVariable("movieId") String movieId, Model model) {
@@ -82,8 +84,27 @@ public class MovieController {
 
 	}
 
+	@GetMapping(path = "/search-movie/")
+	public String searchMovie(@RequestParam(name = "nameMovie") String nameMovie, Model model) {
+		
+		
+		List<String> resultSearch = movieService.searchFilmName(nameMovie);
+		List<String> resultSearchId = movieService.searchFilmId(nameMovie);
+		
+		model.addAttribute("resultSearchMovie", resultSearch);
+		LOGGER.info("RESULTADO DE LA BUSQUEDA MOVIE -->: {} ", resultSearch);
+		
+		model.addAttribute("resultSearchId", resultSearchId);
+		LOGGER.info("RESULTADO DE LA BUSQUEDA MOVIE -->: {} ", resultSearchId);
+
+		return "film/movieSearch.html";
+		
+		
+	}
+	
+	
 	@GetMapping(path = "/search-company/")
-	public String movieForm(@RequestParam(name = "name") String name, Model model) {
+	public String searchCompany(@RequestParam(name = "name") String name, Model model) {
 
 
 		List<String> resultSearch = companyService.searchCompanyName(name);
@@ -99,16 +120,20 @@ public class MovieController {
 		model.addAttribute("resultCompanyHomePage", resultCompanyHomePage);
 		LOGGER.info("RESULTADO DE LA BUSQUEDA DE LA HOME PAGE -->: {} ", resultCompanyHomePage);
 
-		return "film/movieFormSearch.html";
+		return "film/companySearch.html";
 	}
 
 	@RequestMapping(path = "/form")
 	public String movieFormView() {
 
-		return "film/movieForm.html";
+		return "film/companyForm.html";
 	}
 	
-	
+	@RequestMapping(path = "/form-film")
+	public String movieFormFilm() {
+
+		return "film/movieForm.html";
+	}
 
 
 }
