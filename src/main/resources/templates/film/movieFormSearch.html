@@ -125,6 +125,25 @@
 						</div>
 				
 				  </div>
+				    <div class="col-sm">
+				    
+						<div class="card-body">    
+							<table class="table">
+				
+							  <tbody>
+							  
+							    <tr th:each="usuP : ${resultCompanyHomePage}">
+							      	<td>
+							      		<a class="btn btn-success" th:src= "@{{id} (id=${usuP})}" role="button" >Link</a>
+							     	</td>
+
+							    </tr>
+							  </tbody>
+							</table>    
+						</div>
+				
+				  </div>				  
+				  
 				</div>                
                     
                 

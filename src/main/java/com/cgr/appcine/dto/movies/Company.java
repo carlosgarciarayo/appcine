@@ -24,18 +24,19 @@ public class Company implements Serializable {
 	
 	@JsonProperty("logo_path")
 	private String logoPath;
+	
+	private String homepage;
 
-	public Company() {
-	}
+	public Company() {}
 
-
-	public Company(String id, String idCompany, String name, String originCountry, String logoPath) {
+	public Company(String id, String idCompany, String name, String originCountry, String logoPath, String homepage) {
 		super();
 		this.id = id;
 		this.idCompany = idCompany;
 		this.name = name;
 		this.originCountry = originCountry;
 		this.logoPath = logoPath;
+		this.homepage = homepage;
 	}
 
 
@@ -87,12 +88,22 @@ public class Company implements Serializable {
 		this.logoPath = logoPath;
 	}
 
+	public String getHomepage() {
+		return homepage;
+	}
+
+	public void setHomepage(String homepage) {
+		this.homepage = homepage;
+	}
 
 	@Override
 	public String toString() {
-		return "Company [id=" + id + ", idCompany=" + idCompany + ", name=" + name + ", originCountry="
-				+ originCountry + ", logoPath=" + logoPath + "]";
+		return "Company [id=" + id + ", idCompany=" + idCompany + ", name=" + name + ", originCountry=" + originCountry
+				+ ", logoPath=" + logoPath + ", homepage=" + homepage + "]";
 	}
+
+
+
 
 
 

@@ -1,7 +1,9 @@
 package com.cgr.appcine.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,6 +39,7 @@ public class MovieController {
 
 	@Value("${api.language}")
 	private String language;
+	
 
 	@Autowired
 	private RestTemplate restTemplate;
@@ -82,74 +85,21 @@ public class MovieController {
 	@GetMapping(path = "/search-company/")
 	public String movieForm(@RequestParam(name = "name") String name, Model model) {
 
-		List<String> resultSearch = searchCompanyName(name);
-		List<String> resultSearchPoster = searchCompanyPoster(name);
 
+		List<String> resultSearch = companyService.searchCompanyName(name);
+		List<String> resultSearchPoster = companyService.searchCompanyPoster(name);
+		List<String> resultCompanyHomePage = companyService.searchCompanyHomePage(name);
+		
 		model.addAttribute("resultSearch", resultSearch);
-		model.addAttribute("resultSearchPoster", resultSearchPoster);
-
 		LOGGER.info("RESULTADO DE LA BUSQUEDA -->: {} ", resultSearch);
+		
+		model.addAttribute("resultSearchPoster", resultSearchPoster);
+		LOGGER.info("RESULTADO DE LA BUSQUEDA DEL POSTER -->: {} ", resultSearchPoster);
+		
+		model.addAttribute("resultCompanyHomePage", resultCompanyHomePage);
+		LOGGER.info("RESULTADO DE LA BUSQUEDA DE LA HOME PAGE -->: {} ", resultCompanyHomePage);
 
 		return "film/movieFormSearch.html";
-	}
-
-	// Optenemos el logo de la compañia
-	public List<String> searchCompanyPoster(String name) {
-
-		SearchCompanySumary searchCompanySumary = restTemplate.getForObject(
-				"https://api.themoviedb.org/3/search/company?api_key=" + apiKey + "&query=" + name,
-				SearchCompanySumary.class);
-		
-		LOGGER.info("searchSumaryCompany -->: {}",searchCompanySumary);
-
-		List<Company> listCom = searchCompanySumary.getResults();
-		List<String> logoPathCompnayList = new ArrayList<String>();
-
-		String companyPoster = "";
-
-		for (Company c : listCom) {
-
-			if (c.getLogoPath() == null) {
-
-				logoPathCompnayList.add("https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg");
-
-			} else {
-
-				companyPoster = c.getLogoPath();
-				logoPathCompnayList.add(companyPoster);
-
-				LOGGER.info("POSTER-->: {}",logoPathCompnayList);
-			}
-		}
-
-		return logoPathCompnayList;
-
-	}
-
-	// Optenemos el nombre de la compañia
-	public List<String> searchCompanyName(String name) {
-
-		SearchCompanySumary searchCompanySumary = restTemplate.getForObject(
-				"https://api.themoviedb.org/3/search/company?api_key=" + apiKey + "&query=" + name,
-				SearchCompanySumary.class);
-		
-		LOGGER.info("SEARCH_COMPANY_SUMARY -->: {} ",searchCompanySumary);
-
-		List<Company> listCom = searchCompanySumary.getResults();
-		List<String> nameCompnayList = new ArrayList<String>();
-
-		String nameCompany = "";
-
-		for (Company c : listCom) {
-
-			nameCompany = c.getName();
-
-			nameCompnayList.add(nameCompany);
-
-		}
-
-		return nameCompnayList;
-
 	}
 
 	@RequestMapping(path = "/form")
@@ -157,42 +107,8 @@ public class MovieController {
 
 		return "film/movieForm.html";
 	}
+	
+	
 
-//	@GetMapping(path = "/ficha-pelicula")
-//	public String categoryForm() {
-//
-//		return "film/filmSheet";
-//
-//	}
-//
-//	@RequestMapping("/create")
-//	public String create(@RequestParam String title, @RequestParam String description, @RequestParam int outstanding, @RequestParam int status) {
-//		FilmsSheet filmsSheet = filmService.create(title, description, outstanding,status);
-//		return filmsSheet.toString();
-//	}
-//	
-//	@RequestMapping("/get")
-//	public FilmsSheet getFilmsSheet(@RequestParam String title) {
-//		return filmService.getByTitle(title);
-//	}
-//	@RequestMapping("/getAll")
-//	public List<FilmsSheet> getAll(){
-//		return filmService.getAll();
-//	}
-//	@RequestMapping("/update")
-//	public String update(@RequestParam String title, @RequestParam String description, @RequestParam int outstanding) {
-//		FilmsSheet filmsSheet = filmService.update(title, description, outstanding);
-//		return filmsSheet.toString();
-//	}
-//	@RequestMapping("/delete")
-//	public String delete(@RequestParam String title) {
-//		filmService.delete(title);
-//		return "Deleted " + title;
-//	}
-//	@RequestMapping ("/deleteAll")
-//	public String deleteAll() {
-//		filmService.deleteAll();
-//		return "Deleted all records";
-//	}
 
 }
