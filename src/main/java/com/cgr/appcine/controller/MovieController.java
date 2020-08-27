@@ -90,14 +90,19 @@ public class MovieController {
 		
 		List<String> resultSearch = movieService.searchFilmName(nameMovie);
 		List<String> resultSearchId = movieService.searchFilmId(nameMovie);
+		List<String> resultSearchPoster = movieService.searchPosterFilm(nameMovie);
 		
 		model.addAttribute("resultSearchMovie", resultSearch);
 		LOGGER.info("RESULTADO DE LA BUSQUEDA MOVIE -->: {} ", resultSearch);
 		
 		model.addAttribute("resultSearchId", resultSearchId);
-		LOGGER.info("RESULTADO DE LA BUSQUEDA MOVIE -->: {} ", resultSearchId);
-
+		LOGGER.info("RESULTADO DE LA BUSQUEDA ID -->: {} ", resultSearchId);
+		
+		model.addAttribute("resultSearchPoster", resultSearchPoster);
+		LOGGER.info("RESULTADO DE LA BUSQUEDA POSTER -->: {} ", resultSearchPoster);
+		
 		return "film/movieSearch.html";
+
 		
 		
 	}

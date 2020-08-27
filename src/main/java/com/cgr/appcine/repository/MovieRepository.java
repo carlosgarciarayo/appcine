@@ -12,6 +12,7 @@ import com.cgr.appcine.dto.movies.Movie;
 public interface MovieRepository extends MongoRepository<Movie, String>{
 	
 	public Movie findByName(String name);
+	public Movie findByMovieId(Integer movieId);
 
 
 }

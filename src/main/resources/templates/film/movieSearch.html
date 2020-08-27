@@ -53,28 +53,18 @@
                   <h4 class="card-title">REGISTRO DE PELÍCULAS</h4>
                 </div>
                 <div class="card-body">               
-                
-         
-                
-               
-                 <!--   <form th:action="@{/admin/movie/search-company/{id} (name=${companySumary.name})}" method="post" th:object="${companySumary}" enctype="multipart/form-data">                                                           
-           resultSearch        
-                   --> 
-				<form th:action="@{/admin/movie/search-movie/}" method="get" enctype="multipart/form-data">
-				                                                                             
-                   <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                         <label class="bmd-label-floating">Buscar pelicula</label>
-                           <input type="text" class="form-control"  name="name"> 
-                        </div>
-                      </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary pull-right">Enviar</button>
-                  </form>
-                
-            
-  
+					<form th:action="@{/admin/movie/search-movie/}" method="get" enctype="multipart/form-data">
+					                                                                             
+	                   <div class="row">
+	                      <div class="col-md-12">
+	                        <div class="form-group">
+	                         <label class="bmd-label-floating">Buscar pelicula</label>
+	                           <input type="text" class="form-control"  name="nameMovie"> 
+	                        </div>
+	                      </div>
+	                    </div>
+	                    <button type="submit" class="btn btn-primary pull-right" ><i class="material-icons">search</i>Buscar</button>
+	                  </form>              
                 </div>
               </div>
             </div>
@@ -85,52 +75,38 @@
             <div class="col-md-8">
               <div class="card">
                 <div class="card-header card-header-primary">
-                  <h4 class="card-title">RESULTADOS</h4>                  
+                  <h4 class="card-title">RESULTADOS ENCONTRADOS...</h4>                  
                 </div>                
 				<div class="container">
 				  <div class="row">
 				    <div class="col-sm">
-				         <div class="card-body">                           
-				                
-							<table class="table">
-				
+				         <div class="card-body">                                 
+							<table class="table">				
 							  <tbody>
-							    <tr th:each="usu : ${resultSearchMovie}">
-							      	<td >
-							      		<a th:src= "@{/admin/movie/save-movie/{id} (id=${usuId})}"><h5 th:text="${usu}" class="card-category"></h5></a>
+							    <tr th:each="usuPoster : ${resultSearchPoster}">
+							      	<td>							      		
+										<img class="img-fluid d-block" th:src= "@{https://image.tmdb.org/t/p/w300_and_h450_bestv2/{img} (img=${usuPoster})}" width="40%" height="40%" />
 							     	</td>
-							    </tr> 
-							      
+							    </tr>							    
 							  </tbody>
 							</table>                
 						</div>
 				    </div>
-				    <div class="col-sm">
-				    
-						<div class="card-body">   
-						
-							<table class="table">
-				
-							  <tbody>
-							  
+				    <div class="col-sm">				    
+						<div class="card-body">  
+							<table class="table">				
+							  <tbody>							  
 							    <tr th:each="usuId : ${resultSearchId}">
-							      	<td>							      		
-							      		<a class="btn btn-success" th:href= "@{../save-movie/{id} (id=${usuId})}" role="link" >Link</a>
+							      	<td>	
+							      	<br><br><br><br><br><br><br><br>						      		
+							      		<a   class="btn btn-success" th:href= "@{../save-movie/{id} (id=${usuId})}" onclick="return confirm('¿Estas seguro, de que quieres crear esta pelicula en la base de datos?')" role="link" >Crear Pelicula</a>							     	
 							     	</td>
-
 							    </tr>
 							  </tbody>
 							</table>   						
 						</div>
 				
-				  </div>
-				    <div class="col-sm">
-				    
-						<div class="card-body">    
- 
-						</div>
-				
-				  </div>				  
+				  </div> 
 				  
 				</div>                
                     

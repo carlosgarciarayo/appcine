@@ -19,6 +19,7 @@ public class Movie implements Serializable {
 	@JsonProperty("title")
 	private String name;
 	private String description;
+	@JsonProperty("poster_path")
 	private String poster;
 	private String status;
 	private List<Genres> genres;
@@ -26,6 +27,8 @@ public class Movie implements Serializable {
 	private String imdbId;
 	private List<ProductionCountry> productionCountry;
 
+	
+	
 	public Movie() {
 		super();
 	}
