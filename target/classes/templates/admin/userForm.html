@@ -2,14 +2,10 @@
 =========================================================
 * Material Dashboard Dark Edition - v2.1.0
 =========================================================
-
 * Product Page: https://www.creative-tim.com/product/material-dashboard-dark
 * Copyright 2019 Creative Tim (http://www.creative-tim.com)
-
 * Coded by www.creative-tim.com
-
 =========================================================
-
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <!DOCTYPE html>
@@ -31,6 +27,7 @@
   <link href="../assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
+
 </head>
 
 <body class="dark-edition">
@@ -113,20 +110,27 @@
                           </div>
                         </div>
                       </div>
-                     <div class="col-md-6">
+                     <div class="col-md-4">
                         <div class="form-group">
                           <label>Edad:</label>
                           <div class="form-group">
                             <input type="text" class="form-control" th:field="*{age}" name="age">
                           </div>
                         </div>
-                      </div>                      
+                      </div>            
+                     <div class="col-md-2">
+					    <label th:each="perfil : ${profiles}">
+					      <input type="checkbox"/>
+					      <span th:value="${perfil.idProfile}"></span>
+					      <span th:text="${perfil.typeProfile}"></span>
+					    </label>
+                      </div> 
 
+					
 					<input type="file" name="archivoImagen" />
 
                     </div>
                     <button type="submit" class="btn btn-primary pull-right">Enviar</button>
-                    <div class="clearfix"></div>
                   </form>
                 </div>
               </div>
@@ -353,6 +357,7 @@
       });
     });
   </script>
+
 </body>
 
 </html>
