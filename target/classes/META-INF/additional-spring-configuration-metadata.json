@@ -18,5 +18,15 @@
     "name": "spring.jpa.hibernate.naming_strategy",
     "type": "java.lang.String",
     "description": "A description for 'spring.jpa.hibernate.naming_strategy'"
+  },
+  {
+    "name": "api.key",
+    "type": "java.lang.String",
+    "description": "A description for 'api.key'"
+  },
+  {
+    "name": "api.language",
+    "type": "java.lang.String",
+    "description": "A description for 'api.language'"
   }
 ]}
