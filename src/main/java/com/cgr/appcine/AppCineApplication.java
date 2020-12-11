@@ -12,7 +12,7 @@ public class AppCineApplication {
 
 	@Autowired
 	UserService userService;
-	
+	//prueba
 	public static void main(String[] args) {
 		SpringApplication.run(AppCineApplication.class, args);
 	
