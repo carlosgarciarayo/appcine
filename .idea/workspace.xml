@@ -40,13 +40,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca10a691-2867-41bd-bbcd-c8c7896e4835" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="ca10a691-2867-41bd-bbcd-c8c7896e4835" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="development" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -110,7 +111,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607681379051</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="quito comentario">
+      <created>1607684636546</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1607684636546</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -129,6 +137,7 @@
     <MESSAGE value="test" />
     <MESSAGE value="archivo idea" />
     <MESSAGE value="maven .idea" />
-    <option name="LAST_COMMIT_MESSAGE" value="maven .idea" />
+    <MESSAGE value="quito comentario" />
+    <option name="LAST_COMMIT_MESSAGE" value="quito comentario" />
   </component>
 </project>
