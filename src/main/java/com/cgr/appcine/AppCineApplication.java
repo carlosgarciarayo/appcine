@@ -9,7 +9,7 @@ import com.cgr.appcine.service.UserService;
 @SpringBootApplication
 public class AppCineApplication {
 
-	//prueba
+
 	@Autowired
 	UserService userService;
 	
