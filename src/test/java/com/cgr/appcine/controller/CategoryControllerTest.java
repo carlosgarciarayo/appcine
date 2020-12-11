@@ -45,7 +45,6 @@ public class CategoryControllerTest {
 		List<Category> listCa = new ArrayList<>();
 		
 		
-		category.setId(1);
 		category.setName("Carlos");
 		category.setDescription("DEsc");
 		
