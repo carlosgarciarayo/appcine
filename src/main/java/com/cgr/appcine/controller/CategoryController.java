@@ -29,7 +29,7 @@ public class CategoryController {
 	@Autowired
 	CategoryService categoryService;
 
-	Page<Category> listaPage;
+	//Page<Category> listaPage;
 
 	@GetMapping(path = "/lista")
 	public String mostrarIndexPaginado(Model model, Pageable page) {
