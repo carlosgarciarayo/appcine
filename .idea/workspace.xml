@@ -40,7 +40,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca10a691-2867-41bd-bbcd-c8c7896e4835" name="Default Changelist" comment="" />
+    <list default="true" id="ca10a691-2867-41bd-bbcd-c8c7896e4835" name="Default Changelist" comment="quito comentario">
+      <change afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,6 +60,21 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="1lVFcCmUUA8YzuXwDMKrUQaPP7x" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -67,13 +85,26 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects" />
   </component>
-  <component name="RunManager" selected="Application.AppApplication">
+  <component name="RunManager" selected="Application.AppCineApplication">
     <configuration name="AppApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.cgr.batch.AppApplication" />
       <module name="batch" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.cgr.batch.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AppCineApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.cgr.appcine.AppCineApplication" />
+      <module name="appcine" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.cgr.appcine.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -120,12 +151,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.AppApplication" />
+      <item itemvalue="Application.BatchApp" />
+      <item itemvalue="Application.EurekaServerApplication" />
+      <item itemvalue="Application.ZuulServerApplication" />
+      <item itemvalue="Application.AppCineApplication" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.AppCineApplication" />
         <item itemvalue="Application.ZuulServerApplication" />
         <item itemvalue="Application.EurekaServerApplication" />
         <item itemvalue="Application.BatchApp" />
-        <item itemvalue="Application.AppApplication" />
         <item itemvalue="Application.AppApplication" />
       </list>
     </recent_temporary>
@@ -194,7 +232,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test" />
