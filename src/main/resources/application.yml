@@ -1,0 +1,65 @@
+# Configurar la coneccion a la base de datos de Railway
+server:
+  port: ${PORT:7570}
+spring:
+  security:
+    user:
+      name: carlos
+      password: 1234
+  jpa:
+    properties:
+      hibernate:
+        dialect:
+          storage_engine: innodb
+    database: MYSQL
+    show-sql: true
+    hibernate:
+      naming_strategy: org.hibernate.cfg.ImprovedNamingStrategy
+      ddl-auto: none
+  datasource:
+  # LOCALHOST
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cineApp?useSSL=false&serverTimezone=Europe/Madrid&allowPublicKeyRetrieval=true
+    username: root
+    password: Ryc21090
+    dataSourceClassName: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
+  # RAILWAY
+#    url: mysql://containers-us-west-96.railway.app:7570/railway
+#    username: root
+#    password: DEoHa4EO0JHLuSmDn4jK
+#    dataSourceClassName: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/filmSheet
+#      uri: mongodb+srv://admin:Ryc21090@clustercineapp.x6jde.mongodb.net/cine-app?retryWrites=true&w=majority
+#      uri: mongodb://mongo:Wu4nL6arIvs9jHt8zo1Z@containers-us-west-190.railway.app:5644/filmSheet?retryWrites=false
+    web:
+      pageable:
+# CONFIGURACION NUMERO DE PAGIMAS EN LA PAGINACION DE LAS CATEGORIAS
+        default-page-size: 5
+  servlet:
+    multipart:
+# Maximo tamano de archivos que se pueden subir
+      max-file-size: 2MB
+# CONFIGURACION MULTIPART (SUBIDA DE ARCHIVOS)
+# �Habilitamos subida de archivos?
+      enabled: true
+# Directorio intermedio para subir archivos (Linux/MAC)
+      location: /tmp
+# Directorio temporal para subir archivos (Windows)
+#      location: c:/tmp
+# Configurar la coneccion a la API dataMovie
+api:
+  key: 619f9eadef12602c3404f85bf64cab34
+  language: es-ES
+  url-imag: https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg
+# Directorio para subir archivos
+#test:
+#  routes: /home/carlos/git/appcine/src/main/resources/static/admin/assets/img/faces/
+
+
+
+
+
+
+
