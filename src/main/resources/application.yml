@@ -18,21 +18,21 @@ spring:
       ddl-auto: none
   datasource:
   # LOCALHOST
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/cineApp?useSSL=false&serverTimezone=Europe/Madrid&allowPublicKeyRetrieval=true
-    username: root
-    password: Ryc21090
-    dataSourceClassName: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
-  # RAILWAY
-#    url: mysql://containers-us-west-96.railway.app:7570/railway
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/cineApp?useSSL=false&serverTimezone=Europe/Madrid&allowPublicKeyRetrieval=true
 #    username: root
-#    password: DEoHa4EO0JHLuSmDn4jK
+#    password: Ryc21090
 #    dataSourceClassName: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
+  # RAILWAY
+    url: mysql://containers-us-west-96.railway.app:7570/railway
+    username: root
+    password: DEoHa4EO0JHLuSmDn4jK
+    dataSourceClassName: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
   data:
     mongodb:
-      uri: mongodb://localhost:27017/filmSheet
+#      uri: mongodb://localhost:27017/filmSheet
 #      uri: mongodb+srv://admin:Ryc21090@clustercineapp.x6jde.mongodb.net/cine-app?retryWrites=true&w=majority
-#      uri: mongodb://mongo:Wu4nL6arIvs9jHt8zo1Z@containers-us-west-190.railway.app:5644/filmSheet?retryWrites=false
+      uri: mongodb://mongo:Wu4nL6arIvs9jHt8zo1Z@containers-us-west-190.railway.app:5644/filmSheet?retryWrites=false
     web:
       pageable:
 # CONFIGURACION NUMERO DE PAGIMAS EN LA PAGINACION DE LAS CATEGORIAS
