@@ -24,10 +24,10 @@ spring:
 #    password: Ryc21090
 #    dataSourceClassName: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
   # RAILWAY
-    url: mysql://containers-us-west-96.railway.app:7570/railway
-    username: root
-    password: DEoHa4EO0JHLuSmDn4jK
-    dataSourceClassName: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
+    url: mysql://${{ MYSQLUSER }}:${{ MYSQLPASSWORD }}@${{ MYSQLHOST }}:${{ MYSQLPORT }}/${{ MYSQLDATABASE }}
+    username: ${{ MYSQLUSER }}
+    password: ${{ MYSQLPASSWORD }}
+#    dataSourceClassName: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
   data:
     mongodb:
 #      uri: mongodb://localhost:27017/filmSheet
